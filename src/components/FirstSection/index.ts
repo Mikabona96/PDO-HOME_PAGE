@@ -7,7 +7,7 @@ import '../../assets/img/arrow-right.png';
 export const firstSectionFunction = () => {
     document.addEventListener('DOMContentLoaded', () => {
         const firstSection = document.querySelector('.FirstSection');
-        const wrapper = firstSection?.querySelector('.FirstSection .slider .slides-wrapper');
+        const wrapper = (firstSection?.querySelector('.FirstSection .slider .slides-wrapper')) as HTMLElement;
         const btns = firstSection?.querySelectorAll('.slider-button');
         const rightArrow = firstSection?.querySelector('.arrow-right');
         const leftArrow = firstSection?.querySelector('.arrow-left');
@@ -88,6 +88,33 @@ export const firstSectionFunction = () => {
                 arrowNavigation('-');
             });
         }
+        // =========== Swipe Events =============
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        let initialPosition = 0;
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        let moving = false;
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        let transform = 0;
+
+        wrapper?.addEventListener('touchstart', (event: any) => {
+            initialPosition = event.touches[ 0 ].clientX;
+            moving = true;
+            const transformMatrix = window.getComputedStyle(wrapper).getPropertyValue('transform');
+            if (transformMatrix !== 'none') {
+                transform = Number(transformMatrix.split(',')[ 4 ].trim());
+            }
+        });
+        wrapper?.addEventListener('touchmove', (event: any) => {
+            if (moving) {
+                const currentPosition = event.touches[ 0 ].clientX;
+                const diff = currentPosition - initialPosition;
+                wrapper.style.transform = `translateX(${transform + diff}px)`;
+                console.log(transform + diff);
+            }
+        });
+        wrapper?.addEventListener('touchend', () => {
+            moving = false;
+        });
     });
 };
 firstSectionFunction();
