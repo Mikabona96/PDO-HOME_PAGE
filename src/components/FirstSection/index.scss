@@ -563,114 +563,157 @@
         height: $section-height;
         background: $section-background;
         margin: auto;
-    }
-    
-    .slider {
-        position: relative;
-        height: 100%;
-        width: 1360px;
-        overflow: hidden;
-        & .slides-wrapper {
-            display: flex;
-            background: $section-background;
-            transform: translate(0px);
-            transition: .5s ease;
+        & .slider-container {
+            & .slider {
+                position: relative;
+                height: 100%;
+                width: 1360px;
+                overflow: hidden;
+                & .slides-wrapper {
+                    display: flex;
+                    background: $section-background;
+                    transform: translate(0px);
+                    transition: .5s ease;
+                    & .slide {
+                        position: relative;
+                        height: 100%;
+                        & figure {
+                            width: 1360px;
+                            height: 100%;
+                            & img {
+                                position: unset;
+                                min-width: 1360px;
+                                height: 100%;
+                            }
+                        }
+                        // ========== Slide Text =================
+                        & .slide-title {
+                            position: absolute;
+                            left: 48px;
+                            bottom: 89px;
+                            font-size: 72px;
+                            font-family: $lexend;
+                            font-weight: 500;
+                            line-height: 90px;
+                            max-width: 648px;
+                            & .slide-title-text {
+                                background: linear-gradient(285.37deg, #FFFFFF 37.36%, #019748 183.93%);
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: transparent;
+                                background-clip: text;
+                            }
+                        }
+                        & .slide-title-description {
+                            position: absolute;
+                            bottom: 54px;
+                            left: 48px;
+                            font-size: 16px;
+                            line-height: 19px;
+                            color: #fff;
+                            font-family: $inter;
+                        }
+                    }
+                }
+                // ========== Slider Buttons Navigation =================
+                & .slider-buttons {
+                    position: absolute;
+                    right: 48px;
+                    bottom: 48px;
+                    & .slider-button {
+                        cursor: pointer;
+                        width: 16px;
+                        height: 4px;
+                        outline: none;
+                        border: none;
+                        background: rgba(237, 207, 101, 0.5);
+                        border-radius: 5px;
+                        transition: .5s ease;
+                    } 
+                
+                    & .slider-button.active {
+                        width: 40px;
+                        height: 4px;
+                        background: #EDCF65;
+                        border-radius: 5px;
+                    }
+                }
+                // ========== Slider Arrows Navigation =================
+                
+                & .arrow {
+                    position: absolute;
+                    cursor: pointer;
+                }
+                
+                .arrow-right {
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 48px;
+                    & figure {
+                        width: 48px;
+                        height: 48px;
+                    }
+                }
+                .arrow-left {
+                    display: none;
+                    top: 50%;
+                    transform: translateY(-50%) rotate(180deg);
+                    left: 48px;
+                    & figure {
+                        width: 48px;
+                        height: 48px;
+                    }
+                }
+            }
         }
     }
     
-    .slide {
-        position: relative;
-        height: 100%;
-        & figure {
-            width: 1360px;
-            height: 100%;
-            & img {
-                position: unset;
-                min-width: 1360px;
-                height: 100%;
+    .FirstSection.rtl {
+        & .slider-container {
+            & .slider {
+                & .slides-wrapper {
+                    flex-direction: row-reverse;
+                    & .slide {
+                        & .slide-title {
+                            left: auto;
+                            right: 48px;
+                            text-align: end;
+                            & .slide-title-text {
+                                background: linear-gradient(285.37deg, #FFFFFF 37.36%, #019748 183.93%);
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: transparent;
+                                background-clip: text;
+                            }
+                        }
+                        & .slide-title-description {
+                            left: auto;
+                            right: 48px;
+                        }
+                    }
+                }
+                & .slider-buttons {
+                    right: auto;
+                    left: 48px;
+                    display: flex;
+                    flex-direction: row-reverse;
+                    width: 88px;
+                    & .slider-button {
+                        margin-right: 4px;
+                    }
+                }
+                & .arrow-left {
+                    display: block;
+                }
+                & .arrow-right {
+                    display: none;
+                }
             }
         }
     }
     
     
-    // ========== Slide Text =================
-    .slide-title {
-        position: absolute;
-        left: 48px;
-        bottom: 89px;
-        font-size: 72px;
-        font-family: $lexend;
-        font-weight: 500;
-        line-height: 90px;
-        max-width: 648px;
-        & .slide-title-text {
-            background: linear-gradient(285.37deg, #FFFFFF 37.36%, #019748 183.93%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-    }
-    
-    .slide-title-description {
-        position: absolute;
-        bottom: 54px;
-        left: 48px;
-        font-size: 16px;
-        line-height: 19px;
-        color: #fff;
-        font-family: $inter;
-    }
-    
-    // ========== Slider Buttons Navigation =================
-    .slider-buttons {
-        position: absolute;
-        right: 48px;
-        bottom: 48px;
-        & .slider-button {
-            cursor: pointer;
-            width: 16px;
-            height: 4px;
-            outline: none;
-            border: none;
-            background: rgba(237, 207, 101, 0.5);
-            border-radius: 5px;
-            transition: .5s ease;
-        } 
-    
-        & .slider-button.active {
-            width: 40px;
-            height: 4px;
-            background: #EDCF65;
-            border-radius: 5px;
-        }
-    }
     
     
-    // ========== Slider Arrows Navigation =================
     
-    .arrow {
-        position: absolute;
-        cursor: pointer;
-    }
     
-    .arrow-right {
-        top: 50%;
-        transform: translateY(-50%);
-        right: 48px;
-        & figure {
-            width: 48px;
-            height: 48px;
-        }
-    }
-    .arrow-left {
-        display: none;
-        top: 50%;
-        transform: translateY(-50%) rotate(180deg);
-        left: 48px;
-        & figure {
-            width: 48px;
-            height: 48px;
-        }
-    }
 }
 
