@@ -25,7 +25,7 @@ export const headerFunction = () => {
         const dropMenuItems = document.querySelectorAll('.drop-menu .drop-menu-item');
         const width = header.clientWidth;
 
-        if (width === 1360) {
+        if (width >= 1360) {
             dropMenu.addEventListener('mouseleave', () => {
                 header.classList.remove('active');
                 dropMenu.style.display = 'none';

@@ -2,6 +2,16 @@
 @import '../../assets/variables.scss';
 
 @media (min-width: 993px) {
+    .Header.rtl {
+        & .header-nav {
+            & .header-left {
+                & .header-links {
+                    display: flex;
+                    flex-direction: row-reverse;
+                }
+            }
+        }
+    }
     .Header.active {
         & .drop-menu {
             display: none;
@@ -101,6 +111,30 @@
 }
 
 @media (max-width: 992px) {
+    .Header.rtl {
+        & .header-nav {
+            & .header-content {
+                & .content-links {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: end;
+                    padding-right: 24px;
+                }
+                & .contacts {
+                    align-items: end;
+                    padding-right: 24px;
+                    text-align: end;
+                }
+                & .social {
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: 32px;
+                    padding-right: 24px;
+                    align-items: end;
+                }
+            }
+        }
+    }
     .Header.active {
         & .drop-menu {
             display: none;
@@ -564,6 +598,16 @@
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+    .Header.rtl {
+        & .header-nav {
+            & .header-left {
+                & .header-links {
+                    display: flex;
+                    flex-direction: row-reverse;
                 }
             }
         }
