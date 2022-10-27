@@ -9,31 +9,30 @@ export const firstSectionFunction = () => {
         const firstSection = document.querySelector('.FirstSection');
         const wrapper = (firstSection?.querySelector('.FirstSection .slider .slides-wrapper')) as HTMLElement;
         const btns = firstSection?.querySelectorAll('.slider-button');
-        const rightArrow = firstSection?.querySelector('.arrow-right');
-        const leftArrow = firstSection?.querySelector('.arrow-left');
+        const rightArrow = (firstSection?.querySelector('.arrow-right')) as HTMLElement;
+        const leftArrow = (firstSection?.querySelector('.arrow-left')) as HTMLElement;
         const figure = (wrapper?.querySelector('.slide figure')) as HTMLElement;
         const width = figure.offsetWidth;
         let index = 0;
         const rtl = !!firstSection?.classList.contains('rtl');
 
+        const btnsActiveClassHandler = () => {
+            btns?.forEach((btn, i) => {
+                index === i ?  btn.classList.add('active') : btn.classList.remove('active');
+            });
+        };
+
         const arrowNavigation = (operator: string) => {
             if (operator === '+') {
                 index += 1;
-                btns && btns?.length - 1 <= index ? index = btns?.length - 1 : index;
                 btns && index >= btns?.length - 1 ? index = btns?.length - 1 : index;
-                wrapper?.setAttribute('style', `transform: translateX(${rtl ? '' : '-'}${index * width}px)`);
-                btns?.forEach((btn, i) => {
-                    index === i ?  btn.classList.add('active') : btn.classList.remove('active');
-                });
-                console.log(index);
+                wrapper?.setAttribute('style', `transform: translateX(-${index * width}px)`);
+                btnsActiveClassHandler();
             } else {
                 index -= 1;
                 index < 0 ? index = 0 : index;
-                wrapper?.setAttribute('style', `transform: translateX(${rtl ? '' : '-'}${index * width}px)`);
-                btns?.forEach((btn, i) => {
-                    index === i ?  btn.classList.add('active') : btn.classList.remove('active');
-                });
-                console.log('here');
+                wrapper?.setAttribute('style', `transform: translateX(-${index * width}px)`);
+                btnsActiveClassHandler();
             }
             if (firstSection?.classList.contains('rtl')) {
                 index > 0 ? rightArrow?.setAttribute('style', 'display: block') : rightArrow?.setAttribute('style', 'display: none');
@@ -42,29 +41,19 @@ export const firstSectionFunction = () => {
                 index > 0 ? leftArrow?.setAttribute('style', 'display: block') : leftArrow?.setAttribute('style', 'display: none');
                 btns && index >= btns?.length - 1 ? rightArrow?.setAttribute('style', 'display: none') : rightArrow?.setAttribute('style', 'display: block');
             }
-            console.log(index);
         };
 
         const slideImages = (idx: number) => {
             index = idx;
-            console.log(index, idx);
             if (width > 576) {
                 index > 0 ? leftArrow?.setAttribute('style', 'display: block') : leftArrow?.setAttribute('style', 'display: none');
-            }
-            if (rtl) {
-                btns && btns?.length - 1 === index ? leftArrow?.setAttribute('style', 'display: none') : leftArrow?.setAttribute('style', 'display: block');
-                btns && btns?.length - 1 === index ? rightArrow?.setAttribute('style', 'display: block') : rightArrow?.setAttribute('style', 'display: none');
-                index === 0 ? rightArrow?.setAttribute('style', 'display: none') : rightArrow?.setAttribute('style', 'display: block');
             } else {
                 btns && btns?.length - 1 === index ? rightArrow?.setAttribute('style', 'display: none') : rightArrow?.setAttribute('style', 'display: block');
             }
 
-            btns?.forEach((btn, i) => {
-                idx === i ?  btn.classList.add('active') : btn.classList.remove('active');
-            });
+            btnsActiveClassHandler();
 
-            idx === 0 ? wrapper?.setAttribute('style', 'transform: translateX(0px)') : wrapper?.setAttribute('style', `transform: translateX(${rtl ? '' : '-'}${idx * width}px)`);
-            console.log(index);
+            idx === 0 ? wrapper?.setAttribute('style', 'transform: translateX(0px)') : wrapper?.setAttribute('style', `transform: translateX(-${idx * width}px)`);
         };
 
         btns?.forEach((btn, idx) => {
@@ -95,6 +84,8 @@ export const firstSectionFunction = () => {
         let moving = false;
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         let transform = 0;
+        let diff = 0;
+        let currentPosition = 0;
 
         wrapper?.addEventListener('touchstart', (event: any) => {
             initialPosition = event.touches[ 0 ].clientX;
@@ -106,14 +97,45 @@ export const firstSectionFunction = () => {
         });
         wrapper?.addEventListener('touchmove', (event: any) => {
             if (moving) {
-                const currentPosition = event.touches[ 0 ].clientX;
-                const diff = currentPosition - initialPosition;
-                wrapper.style.transform = `translateX(${transform + diff}px)`;
-                console.log(transform + diff);
+                currentPosition = event.touches[ 0 ].clientX;
+                diff = currentPosition - initialPosition;
+
+                if (diff < 0) {
+                    if (btns && index < btns.length - 1) {
+                        wrapper.style.transform = `translateX(${transform + diff}px)`;
+                    }
+                } else if (index > 0) {
+                    wrapper.style.transform = `translateX(${transform + diff}px)`;
+                }
             }
         });
         wrapper?.addEventListener('touchend', () => {
             moving = false;
+            if (diff < 0) {
+                index += 1;
+                if (btns && index >= btns?.length - 1) {
+                    index = btns.length - 1;
+                }
+                wrapper.style.transform = `translateX(-${width * index}px)`;
+                btnsActiveClassHandler();
+            } else {
+                index -= 1;
+                if (index < 0) {
+                    index = 0;
+                }
+                wrapper.style.transform = `translateX(-${width * index}px)`;
+                btnsActiveClassHandler();
+            }
+            if (index >= 0 && btns && index < btns.length - 1) {
+                rightArrow.style.display = 'block';
+            } else {
+                rightArrow.style.display = 'none';
+            }
+            if (index > 0 && width > 576) {
+                leftArrow.style.display = 'block';
+            } else {
+                leftArrow.style.display = 'none';
+            }
         });
     });
 };
