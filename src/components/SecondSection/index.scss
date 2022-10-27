@@ -1,144 +1,51 @@
 @import '../../assets/variables.scss';
 @import '../../assets/fonts.scss';
 
-@media (max-width: 768px) {
+@media (min-width: 375px) {
     .SecondSection {
-        height: 541px;
+        width: 100%;
+        height: 667px;
         & .section-wrapper {
-            height: 541px;
             position: relative;
-            & figure {
-                height: 426px;
-                overflow: hidden;
-                & img {
-                    position: absolute;
-                    left: 0px;
-                    width: 100%;
-                    height: 426px;
-                }
-            }
-            & .play-btn {
-                display: none;
-            }
-            & .info-container {
-                position: absolute;
-                max-width: 375px;
-                height: 115px;
-                bottom: 0;
-                left: 0;
-                padding: 24px;
-                & .info-title {
-                    font-family: $lexend;
-                    font-style: normal;
-                    font-weight: 500;
-                    font-size: 18px;
-                    line-height: 22px;
-                    display: flex;
-                    align-items: flex-end;
-                    text-transform: uppercase;
-                    color: #000000;
-                    margin-bottom: 8px;
-                }
-                & .info-description {
-                    font-family: 'Inter';
-                    font-style: normal;
-                    font-weight: 400;
-                    font-size: 12px;
-                    line-height: 18px;
-                    color: #000000;
-                }
-                & .info-btn {
-                    display: none;
-                }
-            }
-        }
-    }
-}
-
-@media (max-width: 576px) {
-    .SecondSection {
-        height: 541px;
-        & .section-wrapper {
-            height: 541px;
-            position: relative;
-            & figure {
-                height: 426px;
-                overflow: hidden;
-                & img {
-                    position: absolute;
-                    left: 0px;
-                    width: 100%;
-                    height: 426px;
-                }
-            }
-            & .play-btn {
-                display: none;
-            }
-            & .info-container {
-                position: absolute;
-                max-width: 375px;
-                height: 115px;
-                bottom: 0;
-                left: 0;
-                padding: 24px;
-                & .info-title {
-                    font-family: $lexend;
-                    font-style: normal;
-                    font-weight: 500;
-                    font-size: 18px;
-                    line-height: 22px;
-                    display: flex;
-                    align-items: flex-end;
-                    text-transform: uppercase;
-                    color: #000000;
-                    margin-bottom: 8px;
-                }
-                & .info-description {
-                    font-family: 'Inter';
-                    font-style: normal;
-                    font-weight: 400;
-                    font-size: 12px;
-                    line-height: 18px;
-                    color: #000000;
-                }
-                & .info-btn {
-                    display: none;
-                }
-            }
-        }
-    }
-}
-
-@media (max-width: 375px) {
-    .SecondSection {
-        width: 375px;
-        height: 541px;
-        & .section-wrapper {
-            width: 375px;
-            height: 541px;
-            position: relative;
-            & figure {
+            height: 667px;
+            overflow: hidden;
+            & .video-bg {
                 position: relative;
                 height: 426px;
-                width: 375px;
-                overflow: hidden;
-                & img {
-                    position: absolute;
-                    left: 0px;
+                position: absolute;
+                & .video {
                     height: 426px;
+                    position: absolute;
+                    top: 0;
+                    left: -275px;
+                }
+                & .overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
                 }
             }
-            & .play-btn {
-                display: none;
-            }
             & .info-container {
+                margin-top: 24px;
                 position: absolute;
-                width: 375px;
-                height: 115px;
-                bottom: 0;
-                left: 0;
-                padding: 24px;
+                top: 450px;
+                left: 24px;
+                width: 327px;
+                height: 100px;
+                display: flex;
+                flex-direction: column;
+                & .info-sub-title {
+                    font-family: $lexend;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 10px;
+                    line-height: 12px;
+                    color: $green;
+                }
                 & .info-title {
+                    margin-top: 8px;
                     font-family: $lexend;
                     font-style: normal;
                     font-weight: 500;
@@ -148,14 +55,14 @@
                     align-items: flex-end;
                     text-transform: uppercase;
                     color: #000000;
-                    margin-bottom: 8px;
                 }
                 & .info-description {
-                    font-family: 'Inter';
+                    margin-top: 8px;
+                    font-family: $inter;
                     font-style: normal;
                     font-weight: 400;
                     font-size: 12px;
-                    line-height: 18px;
+                    line-height: 24px;
                     color: #000000;
                 }
                 & .info-btn {
@@ -166,50 +73,136 @@
     }
 }
 
-@media (min-width: 1360px) {
+@media (min-width: 324px) {
     .SecondSection {
-        width: $section-width;
-        height: $section-height;
         & .section-wrapper {
-            position: relative;
-            height: 100%;
             & .video-bg {
-                position: absolute;
-                width: 100%;
-                & iframe {
-                    width: 100%;
-                    height: 880px;
+                & .video {
+                    left: -240px;
                 }
             }
-            & figure {
-                height: 100%;
-            }
-            & .play-btn {
-                width: 104px;
-                height: 104px;
+        }
+    }
+}
+@media (min-width: 413px) {
+    .SecondSection {
+        width: 100%;
+        & .section-wrapper {
+            width: 100%;
+            height: 667px;
+            position: relative;
+            & .playBtn {
+                display: block;
                 position: absolute;
+                height: 104px;
+                width: 104px;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
+                transition: .6s ease;
+            }
+            & .video-bg {
+                & .video {
+                    width: 1360px;
+                    position: absolute;
+                    height: 880px;
+                    top: -58px;
+                    left: -461px
+                }
             }
             & .info-container {
                 position: absolute;
+                padding: 24px;
+                transition: .3s ease;
+                top: auto;
+                width: 100%;
+                height: 150px;
+                bottom: 0px;
+                left: 0px;
+                background: #fff;
+            }
+        }
+    }
+}
+
+@media (min-width: 893px) {
+    .SecondSection {
+        height: 800px;
+        & .section-wrapper {
+            & .video-bg {
+                & .video {
+                    left: -361px
+                }
+            }
+        }
+    }
+}
+@media (min-width: 993px) {
+    .SecondSection {
+        height: 800px;
+        & .section-wrapper {
+            & .video-bg {
+                & .video {
+                    left: -261px
+                }
+            }
+            & .info-container {
+                width: 50%;
+            }
+        }
+    }
+}
+@media (min-width: 1089px) {
+    .SecondSection {
+        height: 800px;
+        & .section-wrapper {
+            & .video-bg {
+                & .video {
+                    left: -121px
+                }
+            }
+            & .info-container {
+                width: 50%;
+            }
+        }
+    }
+}
+@media (min-width: 1241px) {
+    .SecondSection {
+        width: 100%;
+        height: 800px;
+        & .section-wrapper {
+            & .video-bg {
+                & .video {
+                    left: -25px;
+                }
+            }
+            & .info-container {
+                width: 50%;
+            }
+        }
+    }
+}
+@media (min-width: 1360px) {
+    .SecondSection {
+        width: 1360px;
+        height: 880px;
+        & .section-wrapper {
+            width: 1360px;
+            height: 880px;
+            & .video-bg {
+                width: 1360px;
+                height: 880px;
+                & .video {
+                    position: unset;
+                    width: 1360px;
+                    height: 880px;
+                }
+            }
+            & .info-container {
                 width: 680px;
-                height: 277px;
-                bottom: 0;
-                left: 0;
-                background-color: white;
-                display: flex;
-                flex-direction: column;
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 48px 40px;
-                gap: 10px;
-    
-                & .info-title {
-                    width: 560px;
-                    height: 45px;
-    
+                height: 237px;
+                & .info-sub-title {
                     font-family: $lexend;
                     font-style: normal;
                     font-weight: 500;
@@ -220,10 +213,8 @@
                     text-transform: uppercase;
                     color: #000000;
                 }
-    
                 & .info-description {
-                    width: 516px;
-                    height: 48px;
+                    margin-top: 8px;
                     font-family: $inter;
                     font-style: normal;
                     font-weight: 400;
@@ -231,30 +222,24 @@
                     line-height: 24px;
                     color: #000000;
                 }
-    
-                & .info-btn {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: center;
-                    align-items: center;
+                 .info-btn {
+                    display: block;
                     padding: 10px 20px;
-                    border: none;
-                    width: 199px;
+                    width: 197px;
                     height: 64px;
-                    color: white;
-                    background: $btn-color;
-                    font-family: $lexend;
-                    font-style: normal;
-                    font-weight: 400;
-                    font-size: 20px;
-                    line-height: 25px;
-                    text-transform: uppercase;
-                    cursor: pointer;
+                    background: $green;
+                    border: 0;
                     & a {
+                        font-family: 'Lexend';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 20px;
+                        line-height: 25px;
+                        text-transform: uppercase;
+                        color: #FFFFFF;
                         text-decoration: none;
-                        color: white;
                     }
-                }
+                 }
             }
         }
     }

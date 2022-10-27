@@ -73,8 +73,10 @@
                         width: 16px;
                         height: 4px;
                         border: 0;
+                        transition: .3s ease;
                     }
                     & .slider-button.active {
+                        transition: .3s ease;
                         width: 40px;
                         height: 4px;
 
@@ -104,7 +106,14 @@
                 }
                 & .slider-buttons {
                     right: 24px;
+                    display: flex;
                     left: auto;
+                    flex-direction: row-reverse;
+                    width: 88px;
+                    & .slider-button {
+                        margin-left: 6px;
+                        transition: .3s ease;
+                    }
                 }
             }
         }
