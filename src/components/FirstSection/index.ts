@@ -11,8 +11,8 @@ export const firstSectionFunction = () => {
         const btns = firstSection?.querySelectorAll('.slider-button');
         const rightArrow = (firstSection?.querySelector('.arrow-right')) as HTMLElement;
         const leftArrow = (firstSection?.querySelector('.arrow-left')) as HTMLElement;
-        const figure = (wrapper?.querySelector('.slide figure')) as HTMLElement;
-        const width = figure.offsetWidth;
+        const slide = (wrapper?.querySelector('.slide')) as HTMLElement;
+        const width = slide.offsetWidth;
         let index = 0;
         const rtl = !!firstSection?.classList.contains('rtl');
 
