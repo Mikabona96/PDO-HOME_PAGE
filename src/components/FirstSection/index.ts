@@ -12,71 +12,72 @@ export const firstSectionFunction = () => {
         const rightArrow = (firstSection?.querySelector('.arrow-right')) as HTMLElement;
         const leftArrow = (firstSection?.querySelector('.arrow-left')) as HTMLElement;
         const slide = (wrapper?.querySelector('.slide')) as HTMLElement;
-        const width = slide.offsetWidth;
+        let width = slide.offsetWidth;
         let index = 0;
         const rtl = !!firstSection?.classList.contains('rtl');
 
+        // ========== Button Navigation
         const btnsActiveClassHandler = () => {
             btns?.forEach((btn, i) => {
                 index === i ?  btn.classList.add('active') : btn.classList.remove('active');
             });
         };
 
-        const arrowNavigation = (operator: string) => {
-            if (operator === '+') {
-                index += 1;
-                btns && index >= btns?.length - 1 ? index = btns?.length - 1 : index;
-                wrapper?.setAttribute('style', `transform: translateX(-${index * width}px)`);
-                btnsActiveClassHandler();
-            } else {
-                index -= 1;
-                index < 0 ? index = 0 : index;
-                wrapper?.setAttribute('style', `transform: translateX(-${index * width}px)`);
-                btnsActiveClassHandler();
-            }
-            if (firstSection?.classList.contains('rtl')) {
-                index > 0 ? rightArrow?.setAttribute('style', 'display: block') : rightArrow?.setAttribute('style', 'display: none');
-                btns && index >= btns?.length - 1 ? leftArrow?.setAttribute('style', 'display: none') : leftArrow?.setAttribute('style', 'display: block');
-            } else {
-                index > 0 ? leftArrow?.setAttribute('style', 'display: block') : leftArrow?.setAttribute('style', 'display: none');
-                btns && index >= btns?.length - 1 ? rightArrow?.setAttribute('style', 'display: none') : rightArrow?.setAttribute('style', 'display: block');
-            }
-        };
+        window.addEventListener('resize', () => {
+            width = slide.offsetWidth;
+        });
 
         const slideImages = (idx: number) => {
             index = idx;
-            if (width > 576) {
-                index > 0 ? leftArrow?.setAttribute('style', 'display: block') : leftArrow?.setAttribute('style', 'display: none');
+
+            if (rtl) {
+                index > 0 ? rightArrow.style.display = 'block' : rightArrow.style.display = 'none';
+                btns && btns.length - 1 <= index ? leftArrow.style.display = 'none' : leftArrow.style.display = 'block';
             } else {
-                btns && btns?.length - 1 === index ? rightArrow?.setAttribute('style', 'display: none') : rightArrow?.setAttribute('style', 'display: block');
+                index > 0 ? leftArrow.style.display = 'block' : leftArrow.style.display = 'none';
+                btns && btns.length - 1 <= index ? rightArrow.style.display = 'none' : rightArrow.style.display = 'block';
             }
 
             btnsActiveClassHandler();
 
-            idx === 0 ? wrapper?.setAttribute('style', 'transform: translateX(0px)') : wrapper?.setAttribute('style', `transform: translateX(-${idx * width}px)`);
+            idx === 0 ? wrapper?.setAttribute('style', 'transform: translateX(0px)') : wrapper?.setAttribute('style', `transform: translateX(${rtl ? '' : '-'}${idx * width}px)`);
         };
 
-        btns?.forEach((btn, idx) => {
-            btn.addEventListener('click', ()=> {
-                slideImages(idx);
+        btns?.forEach((btn, i) => {
+            btn.addEventListener('click', () => {
+                slideImages(i);
             });
         });
 
+        //=============== Arrow Navigation ==========
         if (rtl) {
-            rightArrow?.addEventListener('click', () => {
-                arrowNavigation('-');
+            leftArrow.addEventListener('click', () => {
+                if (btns && btns.length - 1 > index) {
+                    index += 1;
+                    slideImages(index);
+                }
             });
-            leftArrow?.addEventListener('click', () => {
-                arrowNavigation('+');
+            rightArrow.addEventListener('click', () => {
+                if (index >= 0) {
+                    index -= 1;
+                    slideImages(index);
+                }
             });
-        } else  {
-            rightArrow?.addEventListener('click', () => {
-                arrowNavigation('+');
+        } else {
+            rightArrow.addEventListener('click', () => {
+                if (btns && btns.length - 1 > index) {
+                    index += 1;
+                    slideImages(index);
+                }
             });
-            leftArrow?.addEventListener('click', () => {
-                arrowNavigation('-');
+            leftArrow.addEventListener('click', () => {
+                if (index >= 0) {
+                    index -= 1;
+                    slideImages(index);
+                }
             });
         }
+
         // =========== Swipe Events =============
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         let initialPosition = 0;
@@ -100,41 +101,41 @@ export const firstSectionFunction = () => {
                 currentPosition = event.touches[ 0 ].clientX;
                 diff = currentPosition - initialPosition;
 
-                if (diff < 0) {
-                    if (btns && index < btns.length - 1) {
-                        wrapper.style.transform = `translateX(${transform + diff}px)`;
-                    }
-                } else if (index > 0) {
-                    wrapper.style.transform = `translateX(${transform + diff}px)`;
-                }
+                wrapper.style.transform = `translateX(${transform + diff}px)`;
             }
         });
         wrapper?.addEventListener('touchend', () => {
             moving = false;
-            if (diff < 0) {
-                index += 1;
-                if (btns && index >= btns?.length - 1) {
-                    index = btns.length - 1;
+            if (rtl) {
+                if (diff > 0) {
+                    index += 1;
+                    if (btns && index >= btns?.length - 1) {
+                        index = btns.length - 1;
+                    }
+                    wrapper.style.transform = `translateX(${width * index}px)`;
+                } else {
+                    index -= 1;
+                    if (index < 0) {
+                        index = 0;
+                    }
+                    wrapper.style.transform = `translateX(${width * index}px)`;
                 }
-                wrapper.style.transform = `translateX(-${width * index}px)`;
-                btnsActiveClassHandler();
+                slideImages(index);
             } else {
-                index -= 1;
-                if (index < 0) {
-                    index = 0;
+                if (diff < 0) {
+                    index += 1;
+                    if (btns && index >= btns?.length - 1) {
+                        index = btns.length - 1;
+                    }
+                    wrapper.style.transform = `translateX(-${width * index}px)`;
+                } else {
+                    index -= 1;
+                    if (index < 0) {
+                        index = 0;
+                    }
+                    wrapper.style.transform = `translateX(-${width * index}px)`;
                 }
-                wrapper.style.transform = `translateX(-${width * index}px)`;
-                btnsActiveClassHandler();
-            }
-            if (index >= 0 && btns && index < btns.length - 1) {
-                rightArrow.style.display = 'block';
-            } else {
-                rightArrow.style.display = 'none';
-            }
-            if (index > 0 && width > 576) {
-                leftArrow.style.display = 'block';
-            } else {
-                leftArrow.style.display = 'none';
+                slideImages(index);
             }
         });
     });
