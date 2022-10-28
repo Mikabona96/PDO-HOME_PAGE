@@ -243,36 +243,94 @@
             }
         }
     }
+    .FourthSection.rtl {
+        & .section-bottom {
+            & .column {
+                & .title {
+                    text-align: end;
+                    right: 48px;
+                    left: auto;
+                }
+                & .subtitle {
+                    right: -100%;
+                    left: auto;
+                }
+                & .btn {
+                    right: -100%;
+                    left: auto;
+                }
+            }
+            & .column.active {
+                & .subtitle {
+                    right: 48px;
+                    left: auto;
+                }
+                & .btn {
+                    right: 48px;
+                    left: auto;
+                }
+            }
+            & .column.horizontal {
+                .title {
+                    top: 809px;
+                    right: -117%;
+                    transform: rotate(-90deg);
+                }
+                & .subtitle {
+                    right: 48px;
+                }
+            }
+            & .column.column1.horizontal {
+                & .title {
+                    top: 813px;
+                }
+            }
+            & .column.column3.horizontal {
+                & .title {
+                    top: 798px;
+                }
+            }
+            & .column.column4.horizontal {
+                & .title {
+                    top: 925px;
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: 992px) {
     .FourthSection {
+        background: $section-background;
         max-height: 720px;
-        background: #1D1F22;
         & .section-top {
             display: flex;
             justify-content: center;
             & .section-top-content {
                 margin-top: 32px;
                 width: 327px;
-                font-family: $lexend;
                 text-align: center;
                 display: flex;
                 justify-content: center;
                 flex-direction: column;
                 & .subtitle {
+                    font-family: $lexend;
                     font-style: normal;
                     font-weight: 400;
                     font-size: 12px;
                     line-height: 15px;
+                    text-align: center;
                     color: #EDCF65;
                 }
                 & .title {
                     margin-top: 8px;
+                    font-family: $lexend;
                     font-style: normal;
                     font-weight: 500;
                     font-size: 18px;
                     line-height: 22px;
+                    display: flex;
+                    align-items: flex-end;
                     text-align: center;
                     text-transform: uppercase;
                     background: linear-gradient(285.37deg, #FFFFFF 37.36%, #019748 183.93%);
@@ -405,57 +463,34 @@
             }
         }
     }
+    .FourthSection.rtl {
+        & .section-bottom {
+            & .column {
+                & .arrow {
+                    left: 30px;
+                    right: auto;
+                }
+                & .title {
+                    right: 28px;
+                    left: auto;
+                }
+                & .subtitle {
+                    right: 28px;
+                    left: auto;
+                }
+                & .btn {
+                    right: 28px;
+                    left: auto;
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: 768px) {
     .FourthSection {
         max-height: 1246px;
-        background: #1D1F22;
-        & .section-top {
-            display: flex;
-            justify-content: center;
-            & .section-top-content {
-                margin-top: 32px;
-                width: 327px;
-                font-family: $lexend;
-                text-align: center;
-                display: flex;
-                justify-content: center;
-                flex-direction: column;
-                & .subtitle {
-                    font-style: normal;
-                    font-weight: 400;
-                    font-size: 12px;
-                    line-height: 15px;
-                    color: #EDCF65;
-                }
-                & .title {
-                    margin-top: 8px;
-                    font-style: normal;
-                    font-weight: 500;
-                    font-size: 18px;
-                    line-height: 22px;
-                    text-align: center;
-                    text-transform: uppercase;
-                    background: linear-gradient(285.37deg, #FFFFFF 37.36%, #019748 183.93%);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    background-clip: text;
-                }
-                & .description {
-                    margin-top: 8px;
-                    font-family: $inter;
-                    font-style: normal;
-                    font-weight: 400;
-                    font-size: 12px;
-                    line-height: 18px;
-                    text-align: center;
-                    color: #FFFFFF;
-                }
-            }
-        }
         & .section-bottom {
-            overflow: hidden;
             display: flex;
             flex-direction: column;
             margin-top: 32px;
@@ -470,100 +505,6 @@
                     height: 529px;
                     top: -123px;
                 }
-                & .title {
-                    position: absolute;
-                    left: 24px;
-                    bottom: 47px;
-                    font-size: 18px;
-                    line-height: 22px;
-                    text-transform: uppercase;
-                    font-family: $lexend;
-                    color: #FFFFFF;
-                }
-                & .subtitle {
-                    position: absolute;
-                    left: 24px;
-                    bottom: -30px;
-                }
-                & .btn {
-                    position: absolute;
-                    left: 24px;
-                    bottom: -30px;
-                }
-                & .arrow {
-                    position: absolute;
-                    right: 30px;
-                    bottom: 47px;
-                    padding: 4px 8px;
-                    height: 16px;
-                    width: 18px;
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        height: 9px;
-                        width: 2px;
-                        left: 10px;
-                        transform: rotate(315deg);
-                        background: #fff;
-                        top: 0px;
-                    }
-                    &::after {
-                        content: "";
-                        position: absolute;
-                        height: 9px;
-                        top: 0px;
-                        width: 2px;
-                        right: 0px;
-                        transform: rotate(45deg);
-                        background: #fff;
-                    }
-                }
-            }
-         
-            & .column.active {
-                height: 325px;
-                transition: .3s ease;
-                & .title {
-                    bottom: 98px;
-                }
-                .subtitle {
-                    bottom: 72px;
-                    font-size: 12px;
-                    line-height: 15px;
-                    color: #fff;
-                    font-family: $inter;
-                    transition: .3s ease;
-                }
-                & .btn {
-                    bottom: 19px;
-                    background: #EDCF65;
-                    padding: 4px 16px;
-                    transition: .3s ease;
-                    border: none;
-                    & a {
-                        font-family: $readex;
-                        text-decoration: none;
-                        font-size: 12px;
-                        line-height: 24px;
-                        color: #000000;
-                    }
-                }
-                & .arrow {
-                    position: absolute;
-                    right: 20px;
-                    bottom: 95px;
-                    padding: 4px 8px;
-                    height: 16px;
-                    width: 18px;
-                    transform: rotate(180deg);
-                    transition: .3s ease;
-                    &::before {
-                        
-                    }
-                    &::after {
-
-                    }
-                }
             }
         }
     }
@@ -571,63 +512,13 @@
 @media (max-width: 576px) {
     .FourthSection {
         max-height: 987px;
-        background: #1D1F22;
-        & .section-top {
-            display: flex;
-            justify-content: center;
-            & .section-top-content {
-                margin-top: 32px;
-                width: 327px;
-                font-family: $lexend;
-                text-align: center;
-                display: flex;
-                justify-content: center;
-                flex-direction: column;
-                & .subtitle {
-                    font-style: normal;
-                    font-weight: 400;
-                    font-size: 12px;
-                    line-height: 15px;
-                    color: #EDCF65;
-                }
-                & .title {
-                    margin-top: 8px;
-                    font-style: normal;
-                    font-weight: 500;
-                    font-size: 18px;
-                    line-height: 22px;
-                    text-align: center;
-                    text-transform: uppercase;
-                    background: linear-gradient(285.37deg, #FFFFFF 37.36%, #019748 183.93%);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    background-clip: text;
-                }
-                & .description {
-                    margin-top: 8px;
-                    font-family: $inter;
-                    font-style: normal;
-                    font-weight: 400;
-                    font-size: 12px;
-                    line-height: 18px;
-                    text-align: center;
-                    color: #FFFFFF;
-                }
-            }
-        }
         & .section-bottom {
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            margin-top: 32px;
             & .column {
                 height: 180px;
                 position: relative;
                 overflow: hidden;
                 transition: .3s ease;
                 & img {
-                    position: absolute;
-                    width: -webkit-fill-available;
                     height: 429px;
                     top: -118px;                
                 }
@@ -635,95 +526,19 @@
                     position: absolute;
                     left: 24px;
                     bottom: 17px;
-                    font-size: 18px;
-                    line-height: 22px;
-                    text-transform: uppercase;
-                    font-family: $lexend;
-                    color: #FFFFFF;
-                }
-                & .subtitle {
-                    position: absolute;
-                    left: 24px;
-                    bottom: -30px;
-                }
-                & .btn {
-                    position: absolute;
-                    left: 24px;
-                    bottom: -30px;
                 }
                 & .arrow {
-                    position: absolute;
-                    right: 30px;
                     bottom: 15px;
-                    padding: 4px 8px;
-                    height: 16px;
-                    width: 18px;
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        height: 9px;
-                        width: 2px;
-                        left: 10px;
-                        transform: rotate(315deg);
-                        background: #fff;
-                        top: 0px;
-                    }
-                    &::after {
-                        content: "";
-                        position: absolute;
-                        height: 9px;
-                        top: 0px;
-                        width: 2px;
-                        right: 0px;
-                        transform: rotate(45deg);
-                        background: #fff;
-                    }
                 }
             }
          
             & .column.active {
                 height: 276px;
-                transition: .3s ease;
                 & .title {
                     bottom: 85px;
                 }
                 .subtitle {
                     bottom: 64px;
-                    font-size: 12px;
-                    line-height: 15px;
-                    color: #fff;
-                    font-family: $inter;
-                    transition: .3s ease;
-                }
-                & .btn {
-                    bottom: 19px;
-                    background: #EDCF65;
-                    padding: 4px 16px;
-                    transition: .3s ease;
-                    border: none;
-                    & a {
-                        font-family: $readex;
-                        text-decoration: none;
-                        font-size: 12px;
-                        line-height: 24px;
-                        color: #000000;
-                    }
-                }
-                & .arrow {
-                    position: absolute;
-                    right: 20px;
-                    bottom: 95px;
-                    padding: 4px 8px;
-                    height: 16px;
-                    width: 18px;
-                    transform: rotate(180deg);
-                    transition: .3s ease;
-                    &::before {
-                        
-                    }
-                    &::after {
-
-                    }
                 }
             }
         }
@@ -731,11 +546,9 @@
 }
 @media (max-width: 375px) {
     .FourthSection {
-        background: #1D1F22;
         & .section-bottom {
             & .column {
                 height: 140px;
-                overflow: hidden;
                 & img {
                     width: 375px;
                     height: 253px;
