@@ -52,214 +52,41 @@
             }
         }
     }
+    .FifthSection.rtl {
+        & .info {
+            right: 22px;
+            left: auto;
+            text-align: end;
+        }
+    }
 }
 
 @media (max-width: 992px) {
     .FifthSection {
-        height: 798px;
-        background-color: $section-background;
-        position: relative;
-        padding: 0;
-        margin: 0;
         & .map {
-            height: 798px;
-            background-image: url(http://localhost:3000/assets/images/5th-section-bg.png);
-            background-repeat: no-repeat;
             background-position: bottom 120px right -34px;
             background-size: cover;
-        }
-        & .info {
-            position: absolute;
-            left: 22px;
-            bottom: 0px;
-            width: 340px;
-            height: 220px;
-            & .title {
-                font-family: $lexend;
-                font-style: normal;
-                font-weight: 500;
-                font-size: 18px;
-                line-height: 22px;
-                text-transform: uppercase;
-                color: #FFFFFF;
-            } 
-            & .description.first {
-                margin-right: 0;
-                margin-top: 12px;
-                font-family: $inter;
-                font-style: normal;
-                font-weight: 400;
-                font-size: 12px;
-                line-height: 18px;
-                color: #FFFFFF;
-            }
-            & .description {
-                margin-right: 0;
-                margin-top: 12px;
-                font-family: $inter;
-                font-style: normal;
-                font-weight: 400;
-                font-size: 12px;
-                line-height: 18px;
-                color: #FFFFFF;
-            }
         }
     }
 }
 
 @media (max-width: 768px) {
     .FifthSection {
-        height: 798px;
-        background-color: $section-background;
-        position: relative;
-        padding: 0;
-        margin: 0;
         & .map {
-            height: 798px;
-            background-image: url(http://localhost:3000/assets/images/5th-section-bg.png);
-            background-repeat: no-repeat;
             background-position: bottom 120px right -158px;
-            background-size: cover;
-        }
-        & .info {
-            position: absolute;
-            left: 22px;
-            bottom: 0px;
-            width: 340px;
-            height: 220px;
-            & .title {
-                font-family: $lexend;
-                font-style: normal;
-                font-weight: 500;
-                font-size: 18px;
-                line-height: 22px;
-                text-transform: uppercase;
-                color: #FFFFFF;
-            } 
-            & .description.first {
-                margin-right: 0;
-                margin-top: 12px;
-                font-family: $inter;
-                font-style: normal;
-                font-weight: 400;
-                font-size: 12px;
-                line-height: 18px;
-                color: #FFFFFF;
-            }
-            & .description {
-                margin-right: 0;
-                margin-top: 12px;
-                font-family: $inter;
-                font-style: normal;
-                font-weight: 400;
-                font-size: 12px;
-                line-height: 18px;
-                color: #FFFFFF;
-            }
         }
     }
 }
 
-@media (max-width: 576px) {
-    .FifthSection {
-        height: 798px;
-        background-color: $section-background;
-        position: relative;
-        padding: 0;
-        margin: 0;
-        & .map {
-            height: 798px;
-            background-image: url(http://localhost:3000/assets/images/5th-section-bg.png);
-            background-repeat: no-repeat;
-            background-position: bottom 120px right -158px;
-            background-size: cover;
-        }
-        & .info {
-            position: absolute;
-            left: 22px;
-            bottom: 0px;
-            width: 340px;
-            height: 220px;
-            & .title {
-                font-family: $lexend;
-                font-style: normal;
-                font-weight: 500;
-                font-size: 18px;
-                line-height: 22px;
-                text-transform: uppercase;
-                color: #FFFFFF;
-            } 
-            & .description.first {
-                margin-right: 0;
-                margin-top: 12px;
-                font-family: $inter;
-                font-style: normal;
-                font-weight: 400;
-                font-size: 12px;
-                line-height: 18px;
-                color: #FFFFFF;
-            }
-            & .description {
-                margin-right: 0;
-                margin-top: 12px;
-                font-family: $inter;
-                font-style: normal;
-                font-weight: 400;
-                font-size: 12px;
-                line-height: 18px;
-                color: #FFFFFF;
-            }
-        }
-    }
-}
 @media (max-width: 375px) {
     .FifthSection {
         height: 651px;
-        background-color: $section-background;
-        position: relative;
-        padding: 0;
-        margin: 0;
         & .map {
             height: 651px;
-            background-image: url('../../assets/img/5th-section-bg.png');
-            // background-size: cover;
-            background-repeat: no-repeat;
             background-position: bottom 120px right -157px;
         }
         & .info {
-            position: absolute;
-            left: 22px;
             bottom: 27px;
-            height: 220px;
-            & .title {
-                font-family: $lexend;
-                font-style: normal;
-                font-weight: 500;
-                font-size: 18px;
-                line-height: 22px;
-                text-transform: uppercase;
-                color: #FFFFFF;
-            } 
-            & .description.first {
-                margin-right: 0;
-                margin-top: 12px;
-                font-family: $inter;
-                font-style: normal;
-                font-weight: 400;
-                font-size: 12px;
-                line-height: 18px;
-                color: #FFFFFF;
-            }
-            & .description {
-                margin-right: 0;
-                margin-top: 12px;
-                font-family: $inter;
-                font-style: normal;
-                font-weight: 400;
-                font-size: 12px;
-                line-height: 18px;
-                color: #FFFFFF;
-            }
         }
     }
 }
@@ -311,6 +138,16 @@
             }
             & .first {
                 height: 72px;
+            }
+        }
+    }
+    .FifthSection.rtl {
+        & .info {
+            right: 48px;
+            left: auto;
+            text-align: end;
+            & .title {
+                display: contents;
             }
         }
     }
