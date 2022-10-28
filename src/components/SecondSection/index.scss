@@ -73,6 +73,14 @@
             }
         }
     }
+    .SecondSection.rtl {
+        & .section-wrapper {
+            & .info-container {
+                align-items: flex-end;
+                text-align: end;
+            }
+        }
+    }
 }
 
 @media (min-width: 324px) {
