@@ -180,6 +180,7 @@
                         align-items: center;
                         align-content: center;
                         cursor: pointer;
+                        -webkit-tap-highlight-color:transparent;
                         & span:first-child::after {
                             content: '';
                             width: 3px;
@@ -323,6 +324,7 @@
                     align-content: center;
                     align-items: center;
                     cursor: pointer;
+                    -webkit-tap-highlight-color:transparent;
                     & span:first-child:after {
                         content: '';
                         width: 18px;
