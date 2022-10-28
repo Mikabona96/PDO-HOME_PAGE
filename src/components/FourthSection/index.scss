@@ -302,6 +302,7 @@
                 position: relative;
                 overflow: hidden;
                 transition: .3s ease;
+                -webkit-tap-highlight-color:transparent;
                 & img {
                     position: absolute;
                     height: 529px;
