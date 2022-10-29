@@ -2,6 +2,7 @@ import '../../assets/img/1st-section-bg.png';
 import '../../assets/img/1st-section-bg2.png';
 import '../../assets/img/1st-section-bg3.png';
 import '../../assets/img/arrow-right.png';
+import language from '../../language.json';
 
 
 export const firstSectionFunction = () => {
@@ -25,6 +26,7 @@ export const firstSectionFunction = () => {
 
         window.addEventListener('resize', () => {
             width = slide.offsetWidth;
+            wrapper.style.transform = `translateX(${width * index}px)`;
         });
 
         const slideImages = (idx: number) => {
