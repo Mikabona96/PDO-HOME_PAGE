@@ -8,7 +8,7 @@
         align-items: center;
         & .title {
             margin-top: 20px;
-            font-family: 'Lexend';
+            font-family: $lexend;
             font-style: normal;
             font-weight: 500;
             font-size: 20px;
@@ -119,34 +119,66 @@
                         height: 300px;
                         flex-direction: column;
                         margin-top: 20px;
+                        position: relative;
                         & figure {
                             & img {
                                 width: 500px;
                             }
                         }
-                        & .title-date {
-                            position: relative;
-                            & .title {
-                                position: absolute;
-                                font-size: 14px;
-                                top: 0;
-                                left: 0;
-                            }
-                            & .date {
-                                position: absolute;
-                                top: 0;
-                                right: 0;
-                                font-size: 14px;
-                            }
+                       
+                        & .title {
+                            position: absolute;
+                            font-size: 14px;
+                            top: 234px;
+                            left: 0;
+                            margin-top: 0px;
                         }
+                        & .date {
+                            position: absolute;
+                            top: 234px;
+                            right: 0;
+                            font-size: 14px;
+                        }
+                        
                         & .link{
-                            margin-top: 55px;
                             font-family: $readex;
                             font-style: normal;
                             font-weight: 400;
                             color: $green;
                             text-decoration: none;
+                            position: absolute;
+                            top: 267px;
                         }
+                    }
+                }
+            }
+        }
+    }
+    .SixthSection.rtl {
+        & .content-container {
+            flex-direction: row-reverse;
+            & .content-left {
+                & .tabs {
+                    flex-direction: row-reverse;
+                }
+            }
+            & .content-right {
+                & .content-wrapper {
+                    & .content {
+                        & .date {
+                            left: 0;
+                            right: auto;
+                        }
+                        & .title {
+                            right: 0;
+                            left: auto;
+                            text-align: end;
+                            margin-top: 0;
+                        }
+                        & .link {
+                            align-self: flex-end;
+                        }
+                        
                     }
                 }
             }
@@ -161,7 +193,7 @@
         align-items: center;
         & .title {
             margin-top: 20px;
-            font-family: 'Lexend';
+            font-family: $lexend;
             font-style: normal;
             font-weight: 500;
             font-size: 20px;
@@ -267,33 +299,74 @@
                     height: 300px;
                     flex-direction: column;
                     margin-top: 20px;
+                    position: relative;
                     & figure {
                         & img {
                             width: 500px;
                         }
                     }
-                    & .title-date {
-                        position: relative;
-                        & .title {
-                            position: absolute;
-                            font-size: 14px;
-                            top: 0;
-                            left: 0;
-                        }
-                        & .date {
-                            position: absolute;
-                            top: 0;
-                            right: 0;
-                            font-size: 14px;
-                        }
+                    & .title {
+                        position: absolute;
+                        font-size: 14px;
+                        top: 236px;
+                        left: 0;
+                        width: 407px;
+                        margin: 0;
+                    }
+                    & .date {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        font-size: 14px;
+                        top: 236px;
                     }
                     & .link{
-                        margin-top: 55px;
                         font-family: $readex;
                         font-style: normal;
                         font-weight: 400;
                         color: $green;
                         text-decoration: none;
+                        position: absolute;
+                        top: 277px;
+                    }
+                }
+            }
+        }
+    }
+    .SixthSection.rtl {
+        & .content-container {
+            & .content-left {
+                & .tabs {
+                    flex-direction: row-reverse;
+                }
+                & .tabs-content-container {
+                    & .tabs-content-wrapper {
+                        & .tab-content {
+                            & .tab-info {
+                                right: 24px;
+                                left: auto;
+                                text-align: end;
+                            }
+                        }
+                    }
+                }
+            }
+            & .content-right {
+                & .content-wrapper {
+                    & .content {
+                        & .title {
+                            text-align: end;
+                            right: 0;
+                            left: auto;
+                        }
+                        & .date {
+                            left: 0;
+                            right: auto;
+                        }
+                        & .link {
+                            right: 0;
+                            left: auto;
+                        }
                     }
                 }
             }
@@ -303,26 +376,17 @@
 
 @media (max-width: 576px) {
     .SixthSection {
-        display: flex;
-        flex-direction: column;
         height: 1035px;
         & .title {
             margin-top: 24px;
             margin-left: 24px;
-            font-family: $lexend;
             text-align: start;
-            font-style: normal;
-            font-weight: 500;
             font-size: 18px;
             line-height: 22px;
-            text-transform: uppercase;
         }
         & .content-container {
             overflow: hidden;
             & .content-left {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
                 & .tabs {
                     display: none;
                 }
@@ -483,48 +547,45 @@
                 }
             }
             & .content-right {
-                display: flex;
                 justify-content: center;
                 margin-top: 32px;
                 max-width: 375px;
                 & .content-wrapper {
-                    max-width: 332px;
+                    max-width: 327px;
                     & .content {
                         margin-top: 0px;
                         height: 238px;
                         margin-bottom: 32px;
+                        position: relative;
                         & figure {
                             & img {
                                 max-width: 327px;
                             }
                         }
-                        & .title-date {
-                            display: flex;
-                            justify-content: space-between;
-                            height: 56px;
-                            & .title {
-                                max-width: 240px;
-                                font-family: $lexend;
-                                font-size: 16px;
-                                line-height: 28px;
-                                color: #000000;
-                                margin: 0 0 0 0;
-                            }
-                            & .date {
-                                font-size: 12px;
-                                line-height: 15px;
-                                font-family: $inter;
-                                color: #848484;
-                            }
+                        & .title {
+                            position: absolute;
+                            font-size: 14px;
+                            top: 155px;
+                            left: 0;
+                            width: 214px;
+                            margin: 0;
                         }
-                        & .link {
-                            margin-top: 8px;
-                            font-size: 16px;
-                            line-height: 24px;
+                        & .date {
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            font-size: 14px;
+                            top: 155px;
+                        }
+                        & .link{
+                            font-family: $readex;
+                            font-style: normal;
+                            font-weight: 400;
+                            color: $green;
                             text-decoration: none;
-                            color: #019748;
+                            position: absolute;
+                            top: 200px;
                         }
-
                         &:last-child {
                             margin-bottom: 0;
                         }
@@ -670,36 +731,32 @@
                 & .content-wrapper {
                     width: 665px;
                     & .content {
-                        height: 376px;
+                        height: 386px;
                         display: flex;
-                        padding: 0 0 0 30px;
+                        margin-left: 30px;
                         flex-direction: column;
-                        margin-bottom: 84px;
-                        & .title-date {
-                            display: flex;
-                            margin-top: 20px;
-                            align-items: center;
-                            align-content: center;
-                            position: relative;
-                            & .title {
-                               width: 500px;
-                               height: 28px;
-                               font-family: $lexend;
-                               font-style: normal;
-                               font-weight: 400;
-                               font-size: 20px;
-                               line-height: 28px;
-                               text-transform: none;
-                               margin-top: 0px;
-                               position: unset;
-                            }
-                            & .date {
-                                font-family: $inter;
-                                font-weight: 400;
-                                font-size: 16px;
-                                line-height: 19px;
-                                color: $grey;
-                            }
+                        margin-bottom: 68px;
+                        
+                        & .title {
+                            width: 500px;
+                            height: 28px;
+                            font-family: $lexend;
+                            font-style: normal;
+                            font-weight: 400;
+                            font-size: 20px;
+                            line-height: 28px;
+                            text-transform: none;
+                            margin-top: 0px;
+                            position: absolute;
+                            top: 300px;
+                        }
+                        & .date {
+                            font-family: $inter;
+                            font-weight: 400;
+                            font-size: 16px;
+                            line-height: 19px;
+                            color: $grey;
+                            top: 300px;
                         }
                         & .link {
                            font-family: $readex;
@@ -710,6 +767,8 @@
                            color: $green;
                            margin-top: 16px;
                            text-decoration: none;
+                           position: absolute;
+                           top: 349px;
                         }
                         & figure {
                             width: 100%;
