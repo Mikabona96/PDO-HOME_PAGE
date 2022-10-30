@@ -189,7 +189,7 @@
                 }
             }
             & .column.active {
-                width: 620px;
+                width: 820px;
                 transition: .3s ease;
                 & img {
                     transition: .3s ease;
@@ -237,7 +237,7 @@
                     width: 589px;
                     left: -50%;
                     height: 35px;
-                    transform: translateX(-7%) rotate(-90deg);
+                    transform: translateX(-27%) rotate(-90deg);
                     bottom: 38%;
                     transition: 0.3s ease;
                 }
@@ -861,8 +861,28 @@
             }
             & .column.horizontal {
                 transition: .3s ease;
+                & .title {
+                    position: absolute;
+                    width: 589px;
+                    left: -100%;
+                    height: 35px;
+                    transform: translateX(-3%) rotate(-90deg);
+                    bottom: 38%;
+                    transition: 0.3s ease;
+                }
                 & img {
                     transition: .3s ease;
+                }
+            }
+        }
+    }
+    .FourthSection.rtl {
+        & .section-bottom {
+            & .column.horizontal {
+                & .title {
+                    top: 798px;
+                    right: -50%;
+                    transform: translateX(-3%) rotate(-90deg);
                 }
             }
         }
