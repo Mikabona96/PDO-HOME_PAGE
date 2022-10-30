@@ -8,9 +8,11 @@ export const sixthSectionFunction = () => {
         if (Section6) {
             const tabs = Section6.querySelectorAll('.tab');
             const content = Section6.querySelector('.tabs-content-wrapper');
-            const width = content?.querySelector('.tab-content')?.clientWidth;
-            // const select = (Section6.querySelector('.select')) as HTMLSelectElement;
+            let width = content?.querySelector('.tab-content')?.clientWidth;
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            let index = 0;
             const toggleTabs = (idx: number) => {
+                index = idx;
                 tabs.forEach((tab) => {
                     tab.classList.remove('active');
                 });
@@ -28,6 +30,12 @@ export const sixthSectionFunction = () => {
                 });
             });
 
+            window.addEventListener('resize', () => {
+                width = content?.querySelector('.tab-content')?.clientWidth;
+                toggleTabs(index);
+            });
+
+            // ================= Custom Select ================
             const selected = (document.querySelector('.selected')) as HTMLElement;
             const optionsContainer = document.querySelector('.options-container');
 
@@ -42,7 +50,6 @@ export const sixthSectionFunction = () => {
                     const label = o?.querySelector('label');
                     const data = o?.querySelector('label')?.innerHTML;
                     const index =  label ? label.getAttribute('data-value') : null;
-                    console.log(index, 'index');
                     if (Number(index) === 0 || !index) {
                         content?.setAttribute('style', 'transform: translateX(0px)');
                     } else {
