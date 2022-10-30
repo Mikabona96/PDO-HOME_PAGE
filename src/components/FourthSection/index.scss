@@ -227,6 +227,7 @@
                 }
             }
             & .column.horizontal {
+                width: 180px;
                 transition: .3s ease;
                 & img {
                     transition: .3s ease;
@@ -234,11 +235,11 @@
                 .title {
                     position: absolute;
                     width: 589px;
-                    left: -117%;
+                    left: -50%;
                     height: 35px;
-                    transform: rotate(-90deg);
+                    transform: translateX(-7%) rotate(-90deg);
                     bottom: 38%;
-                    transition: .3s ease;
+                    transition: 0.3s ease;
                 }
             }
         }
@@ -261,6 +262,7 @@
                 }
             }
             & .column.active {
+                width: 820px;
                 & .subtitle {
                     right: 48px;
                     left: auto;
@@ -271,10 +273,11 @@
                 }
             }
             & .column.horizontal {
+                width: 180px;
                 .title {
-                    top: 809px;
-                    right: -117%;
-                    transform: rotate(-90deg);
+                    top: 798px;
+                    right: -50%;
+                    transform: translateX(25%) rotate(-90deg);
                 }
                 & .subtitle {
                     right: 48px;
@@ -859,15 +862,6 @@
             & .column.horizontal {
                 transition: .3s ease;
                 & img {
-                    transition: .3s ease;
-                }
-                .title {
-                    position: absolute;
-                    width: 589px;
-                    left: -117%;
-                    height: 35px;
-                    transform: rotate(-90deg);
-                    bottom: 38%;
                     transition: .3s ease;
                 }
             }
