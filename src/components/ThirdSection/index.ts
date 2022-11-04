@@ -1,8 +1,89 @@
+/* eslint-disable semi */
 import '../../assets/img/3rd-section-logo.png';
 import '../../assets/img/3rd-section-bg.png';
 import '../../assets/img/3rd-section-slide-1.png';
 import '../../assets/img/3rd-section-slide-2.png';
 import '../../assets/img/3rd-section-slide-3.png';
+
+
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ScrollToPlugin from 'gsap/ScrollToPlugin';
+import Observer from 'gsap/Observer';
+import { scrolling } from '../..';
+
+gsap.registerPlugin(Observer);
+gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin);
+
+let animating = false;
+const slides = document.querySelectorAll('.image-wrapper');
+const btn = (document.querySelector('.info-btn-link')) as HTMLElement
+
+const ScrollTriggerCreateForEachSlide = () => {
+    let currentIndex = 0;
+    function gotoPanel(index: number) {
+        animating = true;
+        gsap.to('.side-wrapper-right', {
+            duration:   1,
+            scrollTo:   slides[ index ],
+            onComplete: () => {
+                if (index === 0) {
+                    btn.innerText = 'Investing in our people'
+                } else if (index === 1) {
+                    btn.innerText = 'Investing in our Community'
+                } else {
+                    btn.innerText = 'Investing in Oman SUSTAINABILITY'
+                }
+                if (index === slides.length - 1 || index === 0) {
+                    if (index <= 0) {
+                        currentIndex = 0
+                    } else if (index >= slides.length - 1) {
+                        currentIndex = slides.length - 1
+                    }
+
+                    // console.log(`currentindex from complete ${currentIndex}`);
+                    scrolling.enable()
+                }
+                animating = false;
+            },
+        });
+    }
+    ScrollTrigger.observe({
+        target: '.ThirdSection',
+        type:   scrolling.events.join(','),
+        onUp:   () => {
+            if (!animating) {
+                currentIndex <= 0 ? currentIndex = 0 : currentIndex -= 1
+                // console.log(`up, currentIndex ${currentIndex}`);
+                gotoPanel(currentIndex)
+            }
+        },
+        onDown: () => {
+            if (!animating) {
+                currentIndex >= slides.length - 1 ? currentIndex = slides.length - 1 : currentIndex += 1
+                // console.log(`dow, currentIndex ${currentIndex}`);
+                gotoPanel(currentIndex)
+            }
+        },
+    });
+};
+
+ScrollTrigger.create({
+    trigger: document.querySelector('.ThirdSection'),
+    start:   'top bottom',
+    end:     '99% top',
+    onEnter: () => {
+        ScrollTriggerCreateForEachSlide();
+    },
+    onEnterBack: () => {
+        ScrollTriggerCreateForEachSlide();
+    },
+});
+
+// setInterval(() => {
+//     console.log(scrolling.enabled);
+// }, 1000)
 
 export const thirdSectionFunction = () => {
     document.addEventListener('DOMContentLoaded', () => {

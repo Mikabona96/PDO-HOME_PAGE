@@ -165,79 +165,96 @@
 
 @media (min-width: 1360px) {
     .ThirdSection {
-        width: $section-width;
-        height: $section-height;
+        width: 100%;
+        height: 100vh;
         background: #FBFBFB;
         display: flex;
+        justify-content: space-between;
         flex-direction: row;
         padding: 48px;
         margin: auto;
+        overflow: hidden;
         & .side-wrapper {
             position: relative;
-            width: 50%;
+            // width: 50%;
             height: 100%;
         }
         & .slider {
             display: none;
         }
-    }
-    
-    .side-wrapper-left {
-        & .info {
-            position: absolute;
-            width: 560px;
-            bottom: 0;
-            font-family: $lexend;
-            & .info-title {
+        & .side-wrapper-left {
+            & .info {
+                position: absolute;
                 width: 560px;
-                height: 20px;
-                font-style: normal;
-                font-weight: 400;
-                font-size: 16px;
-                line-height: 20px;
-                color: $btn-color;
-            }
-    
-            & .info-description {
-                margin-top: 16px;
-                width: 560px;
-                height: 225px;
-                font-style: normal;
-                font-weight: 500;
-                font-size: 36px;
-                line-height: 45px;
-                display: flex;
-                align-items: flex-end;
-                text-transform: uppercase;
-                color: #000000;
-            }
-    
-            & .info-btn {
-                margin-top: 56px;
-                width: 332px;
-                height: 64px;
-                background: $btn-color;
-                border: 0;
-                outline: 0;
-                cursor: pointer;
-                & a {
-                    text-decoration: none;
+                bottom: 0;
+                font-family: $lexend;
+                & .info-title {
+                    width: 560px;
+                    height: 20px;
                     font-style: normal;
                     font-weight: 400;
-                    font-size: 20px;
-                    line-height: 25px;
+                    font-size: 16px;
+                    line-height: 20px;
+                    color: $btn-color;
+                }
+        
+                & .info-description {
+                    margin-top: 16px;
+                    width: 560px;
+                    height: 225px;
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 36px;
+                    line-height: 45px;
+                    display: flex;
+                    align-items: flex-end;
                     text-transform: uppercase;
-                    color: #FFFFFF;
-                    font-family: $lexend;
+                    color: #000000;
+                }
+        
+                & .info-btn {
+                    margin-top: 56px;
+                    width: fit-content;
+                    padding: 0 16px;
+                    height: 64px;
+                    background: $btn-color;
+                    border: 0;
+                    outline: 0;
+                    transition: .3s ease;
+                    cursor: pointer;
+                    & a {
+                        transition: .3s ease;
+                        text-decoration: none;
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 20px;
+                        line-height: 25px;
+                        text-transform: uppercase;
+                        color: #FFFFFF;
+                        font-family: $lexend;
+                    }
+                }
+            }
+        }
+        
+        & .side-wrapper-right {
+            display: block;
+            width: fit-content;
+            overflow-y: hidden;
+            & .image-wrapper {
+                height: 100%;
+    
+                &:not(:last-child) {
+                    margin-bottom: 100px;
+                }
+    
+                & img {
+                    height: 100%;
                 }
             }
         }
     }
     
-    .side-wrapper-right {
-        display: flex;
-        justify-content: flex-end;
-    }
 
     .ThirdSection.rtl {
         flex-direction: row-reverse;

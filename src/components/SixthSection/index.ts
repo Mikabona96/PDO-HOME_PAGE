@@ -1,66 +1,89 @@
-import '../../assets/img/6th-section-slide1.png';
-import '../../assets/img/5-s-content1.png';
-import '../../assets/img/5-s-content2.png';
+import '../../assets/map.webm';
+import '../../assets/img/points-area.png';
+
+
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ScrollToPlugin from 'gsap/ScrollToPlugin';
+import Observer from 'gsap/Observer';
+import { scrolling, videoEnded } from '../..';
+
+gsap.registerPlugin(Observer);
+gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin);
+
+let animating = false;
+const slides = document.querySelectorAll('.SixthSection .slides-wrapper .slide');
+const slidesWrapper = (document.querySelector('.SixthSection .slides-wrapper')) as HTMLElement;
+// console.log(slides);
+
+const ScrollTriggerCreateForEachSlide = () => {
+    let currentIndex = 0;
+    function gotoPanel(index: number) {
+        animating = true;
+        console.log(videoEnded, 'videoeded');
+
+        if (videoEnded) {
+            gsap.to('.slides-wrapper', {
+                duration:   1,
+                scrollTo:   slides[ index ],
+                onComplete: () => {
+                    if (index === slides.length - 1 || index === 0) {
+                        if (index <= 0) {
+                            currentIndex = 0;
+                        } else if (index >= slides.length - 1) {
+                            currentIndex = slides.length - 1;
+                        }
+
+                        // console.log(`currentindex from complete ${currentIndex}`);
+                        scrolling.enable();
+                    }
+                    animating = false;
+                },
+            });
+        } else {
+            animating = false;
+            scrolling.enable();
+        }
+    }
+    ScrollTrigger.observe({
+        target: '.SixthSection',
+        type:   scrolling.events.join(','),
+        onUp:   () => {
+            if (!animating) {
+                currentIndex <= 0 ? currentIndex = 0 : currentIndex -= 1;
+                console.log(`up, currentIndex ${currentIndex}`);
+                gotoPanel(currentIndex);
+            }
+        },
+        onDown: () => {
+            if (!animating) {
+                currentIndex >= slides.length - 1 ? currentIndex = slides.length - 1 : currentIndex += 1;
+                console.log(`dow, currentIndex ${currentIndex}`);
+                gotoPanel(currentIndex);
+            }
+        },
+    });
+};
+
+ScrollTrigger.create({
+    trigger: document.querySelector('.ThirdSection'),
+    start:   'top bottom',
+    end:     '99% top',
+    onEnter: () => {
+        ScrollTriggerCreateForEachSlide();
+    },
+    onEnterBack: () => {
+        ScrollTriggerCreateForEachSlide();
+    },
+});
+
+setInterval(() => {
+    console.log(scrolling.enabled);
+}, 1000);
 
 export const sixthSectionFunction = () => {
-    document.addEventListener('DOMContentLoaded', () => {
-        const Section6 = document.querySelector('.SixthSection');
-        if (Section6) {
-            const tabs = Section6.querySelectorAll('.tab');
-            const content = Section6.querySelector('.tabs-content-wrapper');
-            let width = content?.querySelector('.tab-content')?.clientWidth;
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            let index = 0;
-            const toggleTabs = (idx: number) => {
-                index = idx;
-                tabs.forEach((tab) => {
-                    tab.classList.remove('active');
-                });
-                tabs[ idx ].classList.add('active');
-                if (idx === 0) {
-                    content?.setAttribute('style', 'transform: translateX(0px)');
-                } else {
-                    content?.setAttribute('style', `transform: translateX(-${width ? idx * width : null}px)`);
-                }
-            };
-
-            tabs.forEach((tab, idx) => {
-                tab.addEventListener('click', () => {
-                    toggleTabs(idx);
-                });
-            });
-
-            window.addEventListener('resize', () => {
-                width = content?.querySelector('.tab-content')?.clientWidth;
-                toggleTabs(index);
-            });
-
-            // ================= Custom Select ================
-            const selected = (document.querySelector('.selected')) as HTMLElement;
-            const optionsContainer = document.querySelector('.options-container');
-
-            const optionsList = document.querySelectorAll('.option');
-
-            selected?.addEventListener('click', () => {
-                optionsContainer?.classList.toggle('active');
-            });
-
-            optionsList.forEach((o) => {
-                o.addEventListener('click', () => {
-                    const label = o?.querySelector('label');
-                    const data = o?.querySelector('label')?.innerHTML;
-                    const index =  label ? label.getAttribute('data-value') : null;
-                    if (Number(index) === 0 || !index) {
-                        content?.setAttribute('style', 'transform: translateX(0px)');
-                    } else {
-                        content?.setAttribute('style', `transform: translateX(-${Number(index) * 327}px)`);
-                    }
-                    selected.innerHTML = `${data}`;
-                    optionsContainer?.classList.remove('active');
-                });
-            });
-        }
-    });
+    console.log('SixthSection');
 };
 
 sixthSectionFunction();

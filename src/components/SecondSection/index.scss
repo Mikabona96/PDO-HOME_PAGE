@@ -197,18 +197,19 @@
 }
 @media (min-width: 1360px) {
     .SecondSection {
-        width: 1360px;
-        height: 880px;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
         & .section-wrapper {
-            width: 1360px;
-            height: 880px;
+            width: 100%;
+            height: 100%;
             & .video-bg {
-                width: 1360px;
-                height: 880px;
+                width: 100%;
+                height: 100%;
                 & .video {
                     position: unset;
-                    width: 1360px;
-                    height: 880px;
+                    width: 100%;
+                    height: 100%;
                 }
             }
             & .info-container {

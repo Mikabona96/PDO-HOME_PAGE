@@ -22,7 +22,7 @@ export const loadImagesDev = (): Configuration => ({
     module: {
         rules: [
             {
-                test:      /\.(png|svg|jpg|jpeg|gif|mp4)$/i,
+                test:      /\.(png|svg|jpg|jpeg|gif|mp4|webm)$/i,
                 type:      'asset/resource',
                 generator: {
                     filename: 'assets/images/[name][ext]',
@@ -36,7 +36,7 @@ export const loadImagesProd = (): Configuration => ({
     module: {
         rules: [
             {
-                test:      /\.(png|svg|jpg|jpeg|gif|webp|mp4)$/i,
+                test:      /\.(png|svg|jpg|jpeg|gif|webp|mp4|webm)$/i,
                 type:      'asset/resource',
                 generator: {
                     filename: 'assets/images/[name][ext]',

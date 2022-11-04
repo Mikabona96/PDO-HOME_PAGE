@@ -1,7 +1,9 @@
 @import './assets/variables.scss';
 // MarkerGen import elements styles
 // MarkerGen import components styles
+@import './components/FourthSection/index.scss';
 @import './components/Footer/index.scss';
+@import './components/SeventhSection/index.scss';
 @import './components/SixthSection/index.scss';
 @import './components/FifthSection/index.scss';
 @import './components/FourthSection/index.scss';
@@ -19,13 +21,9 @@
     box-sizing: border-box;
 }
 
-@media (min-width: 1360px) {
-    .main {
-        width: 1360px;
-        margin: 0 auto;
-    }
+body {
+    scroll-behavior: smooth;
 }
-
 
 @media (max-width: 375px) {
     .main {
