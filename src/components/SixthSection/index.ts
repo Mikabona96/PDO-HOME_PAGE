@@ -15,29 +15,18 @@ gsap.registerPlugin(ScrollToPlugin);
 let animating = false;
 const slides = document.querySelectorAll('.SixthSection .slides-wrapper .slide');
 const slidesWrapper = (document.querySelector('.SixthSection .slides-wrapper')) as HTMLElement;
-// console.log(slides);
+let currentIndex = 0;
 
 const ScrollTriggerCreateForEachSlide = () => {
     let currentIndex = 0;
     function gotoPanel(index: number) {
         animating = true;
-        console.log(videoEnded, 'videoeded');
 
         if (videoEnded) {
             gsap.to('.slides-wrapper', {
                 duration:   1,
                 scrollTo:   slides[ index ],
                 onComplete: () => {
-                    if (index === slides.length - 1 || index === 0) {
-                        if (index <= 0) {
-                            currentIndex = 0;
-                        } else if (index >= slides.length - 1) {
-                            currentIndex = slides.length - 1;
-                        }
-
-                        // console.log(`currentindex from complete ${currentIndex}`);
-                        scrolling.enable();
-                    }
                     animating = false;
                 },
             });
@@ -51,16 +40,28 @@ const ScrollTriggerCreateForEachSlide = () => {
         type:   scrolling.events.join(','),
         onUp:   () => {
             if (!animating) {
-                currentIndex <= 0 ? currentIndex = 0 : currentIndex -= 1;
-                console.log(`up, currentIndex ${currentIndex}`);
-                gotoPanel(currentIndex);
+                currentIndex -= 1;
+
+                if (currentIndex >= 0) {
+                    gotoPanel(currentIndex);
+                }
+                if (currentIndex < 0) {
+                    scrolling.enable();
+                    currentIndex = 0;
+                }
             }
         },
         onDown: () => {
             if (!animating) {
-                currentIndex >= slides.length - 1 ? currentIndex = slides.length - 1 : currentIndex += 1;
-                console.log(`dow, currentIndex ${currentIndex}`);
-                gotoPanel(currentIndex);
+                currentIndex += 1;
+
+                if (currentIndex <= slides.length - 1) {
+                    gotoPanel(currentIndex);
+                }
+                if (currentIndex > slides.length - 1) {
+                    scrolling.enable();
+                    currentIndex = slides.length - 1;
+                }
             }
         },
     });
@@ -76,6 +77,12 @@ ScrollTrigger.create({
     onEnterBack: () => {
         ScrollTriggerCreateForEachSlide();
     },
+    onLeave: () => {
+        scrolling.enable();
+    },
+    onLeaveBack: () => {
+        scrolling.enable();
+    },
 });
 
 setInterval(() => {
@@ -87,3 +94,11 @@ export const sixthSectionFunction = () => {
 };
 
 sixthSectionFunction();
+
+// =============================== Dots ===============================
+
+const drop = document.querySelector('.drop');
+
+drop?.addEventListener('click', () => {
+    drop.classList.toggle('active');
+});
