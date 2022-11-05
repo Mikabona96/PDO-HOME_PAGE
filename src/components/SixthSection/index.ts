@@ -106,8 +106,6 @@ const dots = [
         color:        'red',
         right:        '35.2%',
         bottom:       '59.2%',
-        rightActive:  '33.6%',
-        bottomActive: '61.5%',
     },
     {
         title:        'FAHUD',
@@ -116,8 +114,6 @@ const dots = [
         color:        'red',
         right:        '30.8%',
         bottom:       '56%',
-        rightActive:  '29.4%',
-        bottomActive: '58.5%',
     },
     {
         title:        'FAHUD2',
@@ -126,8 +122,6 @@ const dots = [
         color:        'green',
         right:        '30.5%',
         bottom:       '48%',
-        rightActive:  '29.20%',
-        bottomActive: '50.5%',
     },
     {
         title:        'FAHUD3',
@@ -136,8 +130,6 @@ const dots = [
         color:        'red',
         right:        '31.5%',
         bottom:       '44.3%',
-        rightActive:  '30.25%',
-        bottomActive: '46.8%',
     },
     {
         title:        'FAHUD4',
@@ -146,8 +138,6 @@ const dots = [
         color:        'red',
         right:        '28.6%',
         bottom:       '36.6%',
-        rightActive:  '27.20%',
-        bottomActive: '39%',
     },
     {
         title:        'FAHUD5',
@@ -156,8 +146,6 @@ const dots = [
         color:        'red',
         right:        '29.4%',
         bottom:       '33.6%',
-        rightActive:  '28%',
-        bottomActive: '36.2%',
     },
     {
         title:        'FAHUD6',
@@ -166,8 +154,6 @@ const dots = [
         color:        'red',
         right:        '32.5%',
         bottom:       '28.8%',
-        rightActive:  '31.2%',
-        bottomActive: '31.2%',
     },
     {
         title:        'FAHUD7',
@@ -176,8 +162,6 @@ const dots = [
         color:        'red',
         right:        '31.5%',
         bottom:       '26%',
-        rightActive:  '30.2%',
-        bottomActive: '28.4%',
     },
     {
         title:        'FAHUD8',
@@ -186,8 +170,6 @@ const dots = [
         color:        'red',
         right:        '35.5%',
         bottom:       '25%',
-        rightActive:  '34.2%',
-        bottomActive: '27.4%',
     },
     {
         title:        'FAHUD9',
@@ -196,8 +178,6 @@ const dots = [
         color:        'red',
         right:        '33.5%',
         bottom:       '22.2%',
-        rightActive:  '32%',
-        bottomActive: '25%',
     },
     {
         title:        'FAHUD10',
@@ -206,8 +186,6 @@ const dots = [
         color:        'red',
         right:        '34.7%',
         bottom:       '20%',
-        rightActive:  '33.2%',
-        bottomActive: '22.3%',
     },
     {
         title:        'FAHUD11',
@@ -216,8 +194,6 @@ const dots = [
         color:        'green',
         right:        '36%',
         bottom:       '19%',
-        rightActive:  '34.45%',
-        bottomActive: '21.7%',
     },
     {
         title:        'FAHUD12',
@@ -226,8 +202,6 @@ const dots = [
         color:        'red',
         right:        '37%',
         bottom:       '16.5%',
-        rightActive:  '35.4%',
-        bottomActive: '19%',
     },
     {
         title:        'FAHUD13',
@@ -236,8 +210,6 @@ const dots = [
         color:        'red',
         right:        '38.5%',
         bottom:       '19%',
-        rightActive:  '36.9%',
-        bottomActive: '21.9%',
     },
     {
         title:        'FAHUD14',
@@ -246,8 +218,6 @@ const dots = [
         color:        'green',
         right:        '39.2%',
         bottom:       '15.5%',
-        rightActive:  '37.6%',
-        bottomActive: '18%',
     },
     {
         title:        'FAHUD15',
@@ -256,8 +226,6 @@ const dots = [
         color:        'green',
         right:        '42.6%',
         bottom:       '15%',
-        rightActive:  '41.1%',
-        bottomActive: '17.5%',
     },
 ];
 
@@ -292,9 +260,9 @@ dots.forEach((dotI) => {
     dot.addEventListener('click', () => {
         dot.classList.toggle('active');
         if (dot.classList.contains('active')) {
-            dot.style.right = dotI.rightActive;
-            dot.style.bottom = dotI.bottomActive;
+            dot.style.transform = 'translate(33.5%, -35%)';
         } else {
+            dot.style.transform = 'translate(0%, 0%)';
             dot.style.right = dotI.right;
             dot.style.bottom = dotI.bottom;
         }
