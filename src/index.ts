@@ -10,6 +10,13 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import ScrollToPlugin from 'gsap/src/ScrollToPlugin';
 import Observer from 'gsap/Observer';
 
+let rtl = true;
+const sections = document.querySelectorAll('section');
+
+sections.forEach((section) => {
+    rtl ? section.classList.add('rtl') : section.classList.remove('rtl');
+});
+
 gsap.registerPlugin(Observer);
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
@@ -56,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     onComplete: scrolling.disable,
                     duration:   1,
                 });
-            } else if (i === 5) {
+            } else if (i === 4) {
                 gsap.to(window, {
                     scrollTo:   { y: section, autoKill: false },
                     onComplete: scrolling.disable,
