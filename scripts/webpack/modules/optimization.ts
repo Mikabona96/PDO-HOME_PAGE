@@ -8,7 +8,7 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin';
  * development — оптимизация включена только в mode: 'development'
  * ✓ — оптимизация включена в mode: 'production' и в mode: 'development'
  */
-export const optimizeBuild = (): Configuration => ({
+export const optimizeBuild = (isFullBuild: boolean): Configuration => ({
     optimization: {
         nodeEnv: 'production',
 
@@ -17,7 +17,7 @@ export const optimizeBuild = (): Configuration => ({
         // chunk graph → output
 
         // production: минификация JavaScript.
-        minimize:  true,
+        minimize:  isFullBuild,
         minimizer: [ new TerserPlugin() ],
 
         // production: останавливает эмит сборки при возникновении ошибки во время компиляции.
@@ -105,7 +105,7 @@ export const optimizeBuild = (): Configuration => ({
             },
         },
         // Выносит webpack runtime каждого entrypoint в отдельный чанк. false по-умолчанию.
-        runtimeChunk: true,
+        runtimeChunk: isFullBuild,
     },
 });
 

@@ -7,7 +7,7 @@ import { getCommonConfig } from './webpack.common';
 // Modules
 import * as modules from '../modules';
 
-export const getProdConfig = () => {
+export const getFullProdConfig = () => {
     return merge(
         getCommonConfig(),
         {
@@ -16,10 +16,11 @@ export const getProdConfig = () => {
         },
         modules.cleanDirectories(),
         modules.loadImagesProd(),
-        modules.loadProdCssWithoutMini(),
+        modules.loadProdCss(),
         modules.connectBuildProgressIndicator(),
-        modules.optimizeBuild(false),
+        modules.optimizeBuild(true),
         modules.connectBundleAnalyzer(),
         modules.loadFontsProd(),
+        modules.htmlMinimizer(),
     );
 };
