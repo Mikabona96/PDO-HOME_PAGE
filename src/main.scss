@@ -24,6 +24,29 @@ body {
     scroll-behavior: smooth;
 }
 
+.main {
+    position: relative;
+    & .goup {
+        display: none;
+        position: fixed;
+        right: 58px;
+        bottom: 76px;
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        background-color: #fff;
+        cursor: pointer;
+        & span {
+            height: 20px;
+            width: 4px;
+            background: yellow;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+    }
+}
+
 @media (max-width: 375px) {
     .main {
         max-width: 375px;

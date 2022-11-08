@@ -5,12 +5,15 @@ import './components';
 import 'normalize.css';
 import './main.scss';
 
+// Images
+import './assets/img/up.png';
+
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import ScrollToPlugin from 'gsap/src/ScrollToPlugin';
 import Observer from 'gsap/Observer';
 
-let rtl = true;
+let rtl = false;
 const sections = document.querySelectorAll('section');
 
 sections.forEach((section) => {
@@ -103,3 +106,40 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+const body = document.querySelector('body');
+
+window.addEventListener('resize', () => {
+    if (body && body.clientWidth < 1400) {
+        ScrollTrigger.disable();
+    } else {
+        ScrollTrigger.enable();
+    }
+});
+
+// Go to top
+
+const topBtn = (document.querySelector('.goup')) as HTMLElement;
+if (rtl) {
+    topBtn.style.right = 'auto';
+    topBtn.style.left = '58px';
+} else {
+    topBtn.style.right = '58px';
+    topBtn.style.left = 'auto';
+}
+
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 1000) {
+        topBtn.style.display = 'block';
+    } else {
+        topBtn.style.display = 'none';
+    }
+});
+
+topBtn.addEventListener('click', () => {
+    ScrollTrigger.disable();
+    gsap.to(window, { duration: 2, scrollTo: '.FirstSection', ease: 'power4.inOut' });
+    setTimeout(() => {
+        scrolling.enable();
+        ScrollTrigger.enable();
+    }, 2000);
+});
