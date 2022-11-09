@@ -16,7 +16,7 @@ export const markers = [
         ],
         title:        'FAHUD1',
         description1: '1PDO has 8,853 staff and over 52,000 contracting employees, a combined workforce made up of over 60 nationalities.',
-        description2: 'We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
+        description2: '1We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
         color:        'red',
     },
     {
@@ -26,7 +26,7 @@ export const markers = [
         ],
         title:        'FAHUD2',
         description1: '2PDO has 8,853 staff and over 52,000 contracting employees, a combined workforce made up of over 60 nationalities.',
-        description2: 'We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
+        description2: '2We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
         color:        'green',
     },
     {
@@ -36,7 +36,7 @@ export const markers = [
         ],
         title:        'FAHUD3',
         description1: '3PDO has 8,853 staff and over 52,000 contracting employees, a combined workforce made up of over 60 nationalities.',
-        description2: 'We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
+        description2: '3We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
         color:        'red',
     },
     {
@@ -46,7 +46,7 @@ export const markers = [
         ],
         title:        'FAHUD4',
         description1: '4PDO has 8,853 staff and over 52,000 contracting employees, a combined workforce made up of over 60 nationalities.',
-        description2: 'We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
+        description2: '4We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
         color:        'red',
     },
     {

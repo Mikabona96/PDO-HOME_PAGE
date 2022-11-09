@@ -138,10 +138,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const description2 = info.querySelector('.description.second');
 
     // eslint-disable-next-line no-undef
-    const removeActivePointers = (pointers: NodeListOf<Element>, idx: number) => {
+
+    type ElementType = {
+        coords: number[];
+        title: string;
+        description1: string;
+        description2: string;
+        color: string;
+    }
+    const removeActivePointers = (pointers: NodeListOf<Element>, idx: number, element: ElementType) => {
         pointers.forEach((pointer, i) => {
             if (i === idx) {
-                pointer.classList.toggle('active');
+                if (!pointer.classList.contains('active')) {
+                    pointer.classList.add('active');
+                    title!.textContent = element.title;
+                    description1!.textContent = element.description1;
+                    description2!.textContent = element.description2;
+                } else {
+                    pointer.classList.remove('active');
+                    title!.textContent = '';
+                    title!.insertAdjacentHTML('afterbegin', '85 years of <br />experience');
+                    description1!.textContent = 'PDO has 8,853 staff and over 52,000 contracting employees, a combined workforce made up of over 60 nationalities.';
+                    description2!.textContent = 'We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.';
+                }
             } else {
                 pointer.classList.remove('active');
             }
@@ -158,10 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         leaflet.marker(element.coords as LatLngExpression, { icon: markerIcon }).addTo(map)
             .on('click', () => {
                 const pointers = document.querySelectorAll('.icon.drop');
-                removeActivePointers(pointers, currentIndex);
-                title!.textContent = element.title;
-                description1!.textContent = element.description1;
-                description2!.textContent = element.description2;
+                removeActivePointers(pointers, currentIndex, element);
             });
     });
     window.addEventListener('resize', () => {
