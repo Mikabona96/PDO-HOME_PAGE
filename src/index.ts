@@ -4,6 +4,7 @@ import './components';
 // Styles
 import 'normalize.css';
 import './main.scss';
+import '../node_modules/leaflet/dist/leaflet.css';
 
 // Images
 import './assets/img/up.png';
@@ -15,6 +16,7 @@ import Observer from 'gsap/Observer';
 
 let rtl = false;
 const sections = document.querySelectorAll('section');
+let width = window.innerWidth;
 
 sections.forEach((section) => {
     rtl ? section.classList.add('rtl') : section.classList.remove('rtl');
@@ -27,7 +29,7 @@ gsap.registerPlugin(ScrollToPlugin);
 
 export const scrolling = {
     enabled: true,
-    events:  'scroll,wheel,touchmove,pointermove'.split(','),
+    events:  'scroll,touchmove,wheel'.split(','),
     prevent: (event: any) => event.preventDefault(),
     disable() {
         if (scrolling.enabled) {
@@ -91,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // const intoAnim = gsap.from(section.querySelector('.right-col'), { yPercent: 50, duration: 1, paused: true });
         ScrollTrigger.create({
             trigger: section,
-            start:   'top bottom',
+            start:   '2% bottom',
             end:     '99% top',
             markers: true,
             onEnter: () => {
@@ -106,19 +108,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-const body = document.querySelector('body');
-
-window.addEventListener('resize', () => {
-    if (body && body.clientWidth < 1400) {
-        ScrollTrigger.disable();
-    } else {
-        ScrollTrigger.enable();
-    }
-});
-
 // Go to top
-
 const topBtn = (document.querySelector('.goup')) as HTMLElement;
+const secondSection = (document.querySelector('.SecondSection')) as HTMLElement;
+let offset = secondSection.offsetTop;
 if (rtl) {
     topBtn.style.right = 'auto';
     topBtn.style.left = '58px';
@@ -128,7 +121,7 @@ if (rtl) {
 }
 
 window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 1000) {
+    if (window.pageYOffset >= offset && width >= 1360) {
         topBtn.style.display = 'block';
     } else {
         topBtn.style.display = 'none';
@@ -142,4 +135,24 @@ topBtn.addEventListener('click', () => {
         scrolling.enable();
         ScrollTrigger.enable();
     }, 2000);
+});
+
+// ========= Disable Scroll ===============
+const checkWidth = (width: number) => {
+    if (width <= 1360) {
+        ScrollTrigger.disable();
+        topBtn.style.display = 'none';
+    } else {
+        topBtn.style.display = 'block';
+        ScrollTrigger.enable();
+    }
+};
+
+checkWidth(width);
+
+window.addEventListener('resize', () => {
+    ScrollTrigger.clearScrollMemory();
+    width = window.innerWidth;
+    checkWidth(width);
+    console.log('jdjdjdjdjdj');
 });

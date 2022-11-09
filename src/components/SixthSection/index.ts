@@ -1,12 +1,16 @@
 import '../../assets/map.webm';
 import '../../assets/img/points-area.png';
 
-
+import leaflet, { LatLngExpression } from 'leaflet';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollToPlugin from 'gsap/ScrollToPlugin';
 import Observer from 'gsap/Observer';
+
 import { scrolling, videoEnded } from '../..';
+
+import { mapCoords } from './map';
+import { markers } from './markers';
 
 gsap.registerPlugin(Observer);
 gsap.registerPlugin(ScrollTrigger);
@@ -14,9 +18,8 @@ gsap.registerPlugin(ScrollToPlugin);
 
 let animating = false;
 const slides = document.querySelectorAll('.SixthSection .slides-wrapper .slide');
-const slidesWrapper = (document.querySelector('.SixthSection .slides-wrapper')) as HTMLElement;
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-let currentIndex = 0;
+
+let width = document.querySelector('body')!.clientWidth;
 
 const ScrollTriggerCreateForEachSlide = () => {
     let currentIndex = 0;
@@ -41,7 +44,11 @@ const ScrollTriggerCreateForEachSlide = () => {
         type:   scrolling.events.join(','),
         onUp:   () => {
             if (!animating) {
-                currentIndex -= 1;
+                if (videoEnded) {
+                    currentIndex -= 1;
+                } else {
+                    currentIndex = 0;
+                }
 
                 if (currentIndex >= 0) {
                     gotoPanel(currentIndex);
@@ -54,7 +61,11 @@ const ScrollTriggerCreateForEachSlide = () => {
         },
         onDown: () => {
             if (!animating) {
-                currentIndex += 1;
+                if (videoEnded) {
+                    currentIndex += 1;
+                } else {
+                    currentIndex = 0;
+                }
 
                 if (currentIndex <= slides.length - 1) {
                     gotoPanel(currentIndex);
@@ -69,7 +80,7 @@ const ScrollTriggerCreateForEachSlide = () => {
 };
 
 ScrollTrigger.create({
-    trigger: document.querySelector('.ThirdSection'),
+    trigger: document.querySelector('.SixthSection'),
     start:   'top bottom',
     end:     '99% top',
     onEnter: () => {
@@ -86,186 +97,75 @@ ScrollTrigger.create({
     },
 });
 
-setInterval(() => {
-    console.log(scrolling.enabled);
-}, 1000);
 
-export const sixthSectionFunction = () => {
-    console.log('SixthSection');
-};
-
-sixthSectionFunction();
-
-// =============================== Dots on Map ===============================
-
-const dots = [
-    {
-        title:        'FAHUD0',
-        description1: '000 has 8,853 staff and over 52,000 contracting employees, a combined workforce made up of over 60 nationalities.',
-        description2: '000 operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
-        color:        'red',
-        right:        '35.2%',
-        bottom:       '59.2%',
-    },
-    {
-        title:        'FAHUD',
-        description1: 'PDO has 8,853 staff and over 52,000 contracting employees, a combined workforce made up of over 60 nationalities.',
-        description2: 'We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
-        color:        'red',
-        right:        '30.8%',
-        bottom:       '56%',
-    },
-    {
-        title:        'FAHUD2',
-        description1: 'PDO has 8,853 staff and over 52,000 contracting employees, a combined workforce made up of over 60 nationalities.',
-        description2: 'We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
-        color:        'green',
-        right:        '30.5%',
-        bottom:       '48%',
-    },
-    {
-        title:        'FAHUD3',
-        description1: 'PDO has 8,853 staff and over 52,000 contracting employees, a combined workforce made up of over 60 nationalities.',
-        description2: 'We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
-        color:        'red',
-        right:        '31.5%',
-        bottom:       '44.3%',
-    },
-    {
-        title:        'FAHUD4',
-        description1: 'PDO has 8,853 staff and over 52,000 contracting employees, a combined workforce made up of over 60 nationalities.',
-        description2: 'We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
-        color:        'red',
-        right:        '28.6%',
-        bottom:       '36.6%',
-    },
-    {
-        title:        'FAHUD5',
-        description1: 'PDO has 8,853 staff and over 52,000 contracting employees, a combined workforce made up of over 60 nationalities.',
-        description2: 'We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
-        color:        'red',
-        right:        '29.4%',
-        bottom:       '33.6%',
-    },
-    {
-        title:        'FAHUD6',
-        description1: 'PDO has 8,853 staff and over 52,000 contracting employees, a combined workforce made up of over 60 nationalities.',
-        description2: 'We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
-        color:        'red',
-        right:        '32.5%',
-        bottom:       '28.8%',
-    },
-    {
-        title:        'FAHUD7',
-        description1: 'PDO has 8,853 staff and over 52,000 contracting employees, a combined workforce made up of over 60 nationalities.',
-        description2: 'We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
-        color:        'red',
-        right:        '31.5%',
-        bottom:       '26%',
-    },
-    {
-        title:        'FAHUD8',
-        description1: 'PDO has 8,853 staff and over 52,000 contracting employees, a combined workforce made up of over 60 nationalities.',
-        description2: 'We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
-        color:        'red',
-        right:        '35.5%',
-        bottom:       '25%',
-    },
-    {
-        title:        'FAHUD9',
-        description1: 'PDO has 8,853 staff and over 52,000 contracting employees, a combined workforce made up of over 60 nationalities.',
-        description2: 'We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
-        color:        'red',
-        right:        '33.5%',
-        bottom:       '22.2%',
-    },
-    {
-        title:        'FAHUD10',
-        description1: 'PDO has 8,853 staff and over 52,000 contracting employees, a combined workforce made up of over 60 nationalities.',
-        description2: 'We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
-        color:        'red',
-        right:        '34.7%',
-        bottom:       '20%',
-    },
-    {
-        title:        'FAHUD11',
-        description1: 'PDO has 8,853 staff and over 52,000 contracting employees, a combined workforce made up of over 60 nationalities.',
-        description2: 'We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
-        color:        'green',
-        right:        '36%',
-        bottom:       '19%',
-    },
-    {
-        title:        'FAHUD12',
-        description1: 'PDO has 8,853 staff and over 52,000 contracting employees, a combined workforce made up of over 60 nationalities.',
-        description2: 'We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
-        color:        'red',
-        right:        '37%',
-        bottom:       '16.5%',
-    },
-    {
-        title:        'FAHUD13',
-        description1: 'PDO has 8,853 staff and over 52,000 contracting employees, a combined workforce made up of over 60 nationalities.',
-        description2: 'We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
-        color:        'red',
-        right:        '38.5%',
-        bottom:       '19%',
-    },
-    {
-        title:        'FAHUD14',
-        description1: 'PDO has 8,853 staff and over 52,000 contracting employees, a combined workforce made up of over 60 nationalities.',
-        description2: 'We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
-        color:        'green',
-        right:        '39.2%',
-        bottom:       '15.5%',
-    },
-    {
-        title:        'FAHUD15',
-        description1: 'PDO has 8,853 staff and over 52,000 contracting employees, a combined workforce made up of over 60 nationalities.',
-        description2: 'We operate 202 producing oil fields, 43 gas fields, 29 production stations, more than 9,400 active wells, more than 33,000 kilometres of pipelines and flowlines and 230 operating units in our well engineering fleet.',
-        color:        'green',
-        right:        '42.6%',
-        bottom:       '15%',
-    },
-];
-
-const pointsArea = (document.querySelector('.points-area')) as HTMLElement;
-
-dots.forEach((dotI) => {
-    const dot = document.createElement('div');
-    dot.classList.add('drop');
-    dot.classList.add(`${dotI.color}`);
-
-    const dotTitle = document.createElement('h5');
-    dotTitle.classList.add('title');
-    dotTitle.innerHTML = dotI.title;
-
-    const description1 = document.createElement('div');
-    description1.classList.add('description1');
-    description1.innerHTML = dotI.description1;
-
-    const description2 = document.createElement('div');
-    description2.classList.add('description2');
-    description2.innerHTML = dotI.description2;
-
-    dot.append(dotTitle);
-    dot.append(description1);
-    dot.append(description2);
-
-    dot.style.right = dotI.right;
-    dot.style.bottom = dotI.bottom;
-
-    pointsArea.append(dot);
-
-    dot.addEventListener('click', () => {
-        dot.classList.toggle('active');
-        if (dot.classList.contains('active')) {
-            dot.style.transform = 'translate(33.5%, -35%)';
+document.addEventListener('DOMContentLoaded', () => {
+    const defineWidth = () => {
+        let zoom = 7.4;
+        if (width >= 1360) {
+            zoom = 7.4;
         } else {
-            dot.style.transform = 'translate(0%, 0%)';
-            dot.style.right = dotI.right;
-            dot.style.bottom = dotI.bottom;
+            zoom = 6;
         }
+
+        return zoom;
+    };
+
+    const map = leaflet.map('mapL', { scrollWheelZoom: false, dragging: false, zoomControl: false }).setView([ 20.7061398, 55.4904372 ], defineWidth());
+    map.doubleClickZoom.disable();
+
+    leaflet.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    }).addTo(map);
+    const black = leaflet.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains:  'abcd',
+        maxZoom:     20,
+    });
+    black.addTo(map);
+
+    const latLngs = leaflet.GeoJSON.coordsToLatLngs(mapCoords.geometry.coordinates, 2);
+    leaflet.polyline(latLngs, {
+        color:   '#019748',
+        weight:  3,
+        opacity: 1,
+    }).addTo(map);
+
+    // ================ Markers ==================
+
+    const info = (document.querySelector('.SixthSection .info')) as HTMLElement;
+    const title = info.querySelector('.title');
+    const description1 = info.querySelector('.description.first');
+    const description2 = info.querySelector('.description.second');
+
+    // eslint-disable-next-line no-undef
+    const removeActivePointers = (pointers: NodeListOf<Element>, idx: number) => {
+        pointers.forEach((pointer, i) => {
+            if (i === idx) {
+                pointer.classList.toggle('active');
+            } else {
+                pointer.classList.remove('active');
+            }
+        });
+    };
+
+    markers.forEach((element, currentIndex) => {
+        const markerIcon = leaflet.divIcon({
+            // className: 'drop',
+            iconSize:   [ 32, 37 ],
+            iconAnchor: [ 16, 37 ],
+            html:       `<div class="icon drop ${element.color}"><h5 class="title">${element.title}</h5></div>`,
+        });
+        leaflet.marker(element.coords as LatLngExpression, { icon: markerIcon }).addTo(map)
+            .on('click', () => {
+                const pointers = document.querySelectorAll('.icon.drop');
+                removeActivePointers(pointers, currentIndex);
+                title!.textContent = element.title;
+                description1!.textContent = element.description1;
+                description2!.textContent = element.description2;
+            });
+    });
+    window.addEventListener('resize', () => {
+        width = document.querySelector('body')!.clientWidth;
+        defineWidth();
     });
 });
-

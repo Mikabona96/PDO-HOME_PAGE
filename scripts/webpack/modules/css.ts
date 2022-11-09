@@ -2,7 +2,6 @@
 import { Configuration } from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
-import RemoveEmptyScriptsPlugin from 'webpack-remove-empty-scripts';
 
 const loadCss = ({ sourceMap }: { sourceMap: boolean }) => ({
     loader:  'css-loader',
@@ -73,7 +72,6 @@ export const loadProdCss = (): Configuration => ({
         minimizer: [ new CssMinimizerPlugin() ],
     },
     plugins: [
-        new RemoveEmptyScriptsPlugin({ verbose: true }),
         new MiniCssExtractPlugin({
             filename:      '[name].[contenthash:5].css',
             chunkFilename: '[name].[contenthash:3].css',

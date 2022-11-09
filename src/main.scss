@@ -24,7 +24,20 @@ body {
     scroll-behavior: smooth;
 }
 
+@media (max-width: 375px) {
+    .main {
+        max-width: 375px;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+}
+
+.scetion-wrap {
+    background: $section-background;
+}
+
 .main {
+    overflow: hidden;
     position: relative;
     & .goup {
         display: none;
@@ -36,21 +49,6 @@ body {
         border-radius: 50%;
         background-color: #fff;
         cursor: pointer;
-        & span {
-            height: 20px;
-            width: 4px;
-            background: yellow;
-            position: absolute;
-            top: 0px;
-            left: 0px;
-        }
-    }
-}
-
-@media (max-width: 375px) {
-    .main {
-        max-width: 375px;
-        overflow: hidden;
-        margin: 0 auto;
+        z-index: 999999999;
     }
 }

@@ -26,7 +26,7 @@ export const firstSectionFunction = () => {
 
         window.addEventListener('resize', () => {
             width = slide.offsetWidth;
-            wrapper.style.transform = `translateX(${width * index}px)`;
+            wrapper.style.transform = `translateX(-${width * index}px)`;
         });
 
         const slideImages = (idx: number) => {

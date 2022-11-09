@@ -16,6 +16,7 @@
     "@types/app-root-path": "^1.2.4",
     "@types/imagemin-mozjpeg": "^8.0.1",
     "@types/imagemin-svgo": "^10.0.1",
+    "@types/leaflet": "^1.9.0",
     "@types/mini-css-extract-plugin": "^2.5.1",
     "@types/node": "^18.7.21",
     "@types/react-dev-utils": "^9.0.11",
@@ -73,12 +74,12 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.11.1",
     "webpack-merge": "^5.8.0",
-    "webpack-remove-empty-scripts": "^1.0.1",
     "webpack-shell-plugin-next": "^2.2.2",
     "webpackbar": "^5.0.2"
   },
   "dependencies": {
     "gsap": "^3.11.3",
+    "leaflet": "^1.9.2",
     "normalize.css": "^8.0.1"
   }
 }

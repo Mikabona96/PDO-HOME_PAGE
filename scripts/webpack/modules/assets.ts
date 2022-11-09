@@ -18,6 +18,7 @@ export const connectHtml = (): Configuration => ({
     ],
 });
 
+
 export const loadImagesDev = (): Configuration => ({
     module: {
         rules: [
@@ -32,37 +33,40 @@ export const loadImagesDev = (): Configuration => ({
     },
 });
 
-export const loadImagesProd = (): Configuration => ({
-    module: {
-        rules: [
-            {
-                test:      /\.(png|svg|jpg|jpeg|gif|mp4|webp|webm)$/i,
-                type:      'asset/resource',
-                generator: {
-                    filename: 'assets/images/[name][ext]',
-                },
-            },
-        ],
-    },
-    optimization: {
-        minimizer: [
-            new ImageMinimizerPlugin({
-                minimizer: {
-                    implementation: ImageMinimizerPlugin.imageminMinify,
-                    options:        {
-                        plugins: [
-                            'imagemin-gifsicle',
-                            'imagemin-mozjpeg',
-                            'imagemin-pngquant',
-                            'imagemin-svgo',
-                        ],
+export const loadImagesProd = (): Configuration => {
+    return {
+        module: {
+            rules: [
+                {
+                    test:      /\.(png|svg|jpg|jpeg|gif|mp4|webp|webm)$/i,
+                    type:      'asset/resource',
+                    generator: {
+                        filename: 'assets/images/[name][ext]',
                     },
                 },
-                loader: false,
-            }),
-        ],
-    },
-});
+            ],
+        },
+
+        optimization: {
+            minimizer: [
+                new ImageMinimizerPlugin({
+                    minimizer: {
+                        implementation: ImageMinimizerPlugin.imageminMinify,
+                        options:        {
+                            plugins: [
+                                'imagemin-gifsicle',
+                                'imagemin-mozjpeg',
+                                'imagemin-pngquant',
+                                'imagemin-svgo',
+                            ],
+                        },
+                    },
+                    loader: false,
+                }),
+            ],
+        },
+    };
+};
 
 export const loadFontsDev = (): Configuration => ({
     module: {
