@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let wasPlayed = false;
 
     function goToSection(section?: any, i?: any) {
-        if (scrolling.enabled) { // skip if a scroll tween is in progress
+        if (scrolling.enabled) {
             scrolling.disable();
 
             if (i === 2) {
@@ -90,11 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     sections?.forEach((section, i) => {
-        // const intoAnim = gsap.from(section.querySelector('.right-col'), { yPercent: 50, duration: 1, paused: true });
         ScrollTrigger.create({
             trigger: section,
-            start:   '2% bottom',
-            end:     '99% top',
+            start:   'top bottom',
+            end:     'bottom top',
             markers: true,
             onEnter: () => {
                 scrolling.enable();
@@ -108,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Go to top
+//========================= Go to top ========================
 const topBtn = (document.querySelector('.goup')) as HTMLElement;
 const secondSection = (document.querySelector('.SecondSection')) as HTMLElement;
 let offset = secondSection.offsetTop;
@@ -139,6 +138,7 @@ topBtn.addEventListener('click', () => {
 
 // ========= Disable Scroll ===============
 const checkWidth = (width: number) => {
+    topBtn.style.display = 'none';
     if (width <= 1360) {
         ScrollTrigger.disable();
         topBtn.style.display = 'none';
@@ -149,10 +149,9 @@ const checkWidth = (width: number) => {
 };
 
 checkWidth(width);
-
+topBtn.style.display = 'none';
 window.addEventListener('resize', () => {
     ScrollTrigger.clearScrollMemory();
     width = window.innerWidth;
     checkWidth(width);
-    console.log('jdjdjdjdjdj');
 });

@@ -35,16 +35,6 @@ const ScrollTriggerCreateForEachSlide = () => {
                 } else {
                     btn.innerText = 'Investing in Oman SUSTAINABILITY'
                 }
-                if (index === slides.length - 1 || index === 0) {
-                    if (index <= 0) {
-                        currentIndex = 0
-                    } else if (index >= slides.length - 1) {
-                        currentIndex = slides.length - 1
-                    }
-
-                    // console.log(`currentindex from complete ${currentIndex}`);
-                    scrolling.enable()
-                }
                 animating = false;
             },
         });
@@ -54,15 +44,19 @@ const ScrollTriggerCreateForEachSlide = () => {
         type:   scrolling.events.join(','),
         onUp:   () => {
             if (!animating) {
+                if (currentIndex === 0) {
+                    scrolling.enable()
+                }
                 currentIndex <= 0 ? currentIndex = 0 : currentIndex -= 1
-                // console.log(`up, currentIndex ${currentIndex}`);
                 gotoPanel(currentIndex)
             }
         },
         onDown: () => {
             if (!animating) {
+                if (currentIndex === slides.length - 1) {
+                    scrolling.enable()
+                }
                 currentIndex >= slides.length - 1 ? currentIndex = slides.length - 1 : currentIndex += 1
-                // console.log(`dow, currentIndex ${currentIndex}`);
                 gotoPanel(currentIndex)
             }
         },
@@ -81,9 +75,6 @@ ScrollTrigger.create({
     },
 });
 
-// setInterval(() => {
-//     console.log(scrolling.enabled);
-// }, 1000)
 
 export const thirdSectionFunction = () => {
     document.addEventListener('DOMContentLoaded', () => {

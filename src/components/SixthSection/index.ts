@@ -169,7 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     markers.forEach((element, currentIndex) => {
         const markerIcon = leaflet.divIcon({
-            // className: 'drop',
             iconSize:   [ 32, 37 ],
             iconAnchor: [ 16, 37 ],
             html:       `<div class="icon drop ${element.color}"><h5 class="title">${element.title}</h5></div>`,
