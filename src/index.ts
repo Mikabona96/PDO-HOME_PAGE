@@ -150,8 +150,11 @@ const checkWidth = (width: number) => {
 
 checkWidth(width);
 topBtn.style.display = 'none';
+let timeout: ReturnType<typeof setTimeout> | null = null;
 window.addEventListener('resize', () => {
-    ScrollTrigger.clearScrollMemory();
     width = window.innerWidth;
-    checkWidth(width);
+    timeout && clearTimeout(timeout);
+    timeout = setTimeout(() => {
+        checkWidth(width);
+    }, 500);
 });
