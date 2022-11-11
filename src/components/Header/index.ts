@@ -50,6 +50,9 @@ export const headerFunction = () => {
 
 
         open?.addEventListener('click', () => {
+            if (width <= 992) {
+                header.classList.add('active');
+            }
             headerContent?.classList.add('active');
             body.style.overflow = 'hidden';
         });

@@ -14,14 +14,20 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import ScrollToPlugin from 'gsap/src/ScrollToPlugin';
 import Observer from 'gsap/Observer';
 
-let rtl = false;
+let rtl = true;
 const sections = document.querySelectorAll('section');
 let width = window.innerWidth;
+const header = (document.querySelector('.Header')) as HTMLElement;
+const footer = (document.querySelector('.Footer')) as HTMLElement;
 
+// Apply rtl
 sections.forEach((section) => {
     rtl ? section.classList.add('rtl') : section.classList.remove('rtl');
 });
+rtl ? header.classList.add('rtl') : header.classList.remove('active');
+rtl ? footer.classList.add('rtl') : footer.classList.remove('active');
 
+//========================================= GSAP ===============================================
 gsap.registerPlugin(Observer);
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
