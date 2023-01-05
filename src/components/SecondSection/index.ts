@@ -12,7 +12,7 @@ export const SecondSectionFunction = () => {
     let isPlaying = false;
 
     const videoHandler = () => {
-        isPlaying ? infoContainer.style.opacity = '1' : infoContainer.style.opacity = '0.8';
+        isPlaying ? infoContainer.style.opacity = '1' : infoContainer.style.opacity = '0';
         !isPlaying ? playBtn.style.opacity = '0' : playBtn.style.opacity = '1';
         isPlaying ? video.pause() : video.play();
         isPlaying = !isPlaying;
