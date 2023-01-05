@@ -14,7 +14,7 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import ScrollToPlugin from 'gsap/src/ScrollToPlugin';
 import Observer from 'gsap/Observer';
 
-let rtl = true;
+let rtl = false;
 const sections = document.querySelectorAll('section');
 let width = window.innerWidth;
 const header = (document.querySelector('.Header')) as HTMLElement;

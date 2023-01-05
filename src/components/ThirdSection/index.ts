@@ -33,7 +33,7 @@ const ScrollTriggerCreateForEachSlide = () => {
                 } else if (index === 1) {
                     btn.innerText = 'Investing in our Community'
                 } else {
-                    btn.innerText = 'Investing in Oman SUSTAINABILITY'
+                    btn.innerText = 'Investing in Oman Sustainability'
                 }
                 animating = false;
             },

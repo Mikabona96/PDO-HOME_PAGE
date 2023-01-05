@@ -3,34 +3,34 @@
         "header": {
             "firstRow": {
                 "1": "Careers",
-                "2": "News & media",
+                "2": "News & Media",
                 "3": "PDO-S",
                 "4": "Knowledge World",
                 "5": "Blow the Whistle",
                 "6": "العربية"
             },
             "secondRow": {
-                "1": "Who we are",
-                "2": "Technical excellence",
+                "1": "Who We Are",
+                "2": "Technical Excellence",
                 "3": "Sustainability",
-                "4": "Creating value",
-                "5": "Business with PDO"
-            }, 
+                "4": "Value Creation",
+                "5": "Business With PDO"
+            },
             "mobile": {
                 "first": {
                     "1": "Careers",
-                    "2": "News & media",
+                    "2": "News & Media",
                     "3": "PDO-S",
                     "4": "Knowledge World",
                     "5": "Blow the Whistle",
                     "6": "العربية"
                 },
                 "second": {
-                    "1": "Who we are",
-                    "2": "Technical excellence",
+                    "1": "Who We Are",
+                    "2": "Technical Excellence",
                     "3": "Sustainability",
-                    "4": "Creating value",
-                    "5": "Business with PDO"
+                    "4": "Value Creation",
+                    "5": "Business With PDO"
                 },
                 "contacts": {
                     "title": "Contact us",
@@ -43,16 +43,16 @@
         },
         "firstSection": {
             "slide1": {
-                "title": "Energizing Oman",
-                "description": "Explore how we impact Oman and beyond."
+                "title": "Energising Oman",
+                "description": "Developing renewables alongside our core oil and gas business"
             },
             "slide2": {
-                "title": "Energizing our People",
-                "description": "Explore how we impact Oman and beyond."
+                "title": "Energising Our People",
+                "description": "Providing a rewarding, learning and inclusive workplace"
             },
             "slide3": {
                 "title": "Energizing our Community",
-                "description": "Explore how we impact Oman and beyond."
+                "description": "Championing sustainable development"
             }
         },
         "SecondSection": {
@@ -62,61 +62,61 @@
         },
         "ThirdSection": {
             "slide1": {
-                "title": "What we believe in",
-                "description": "We believe in delivering excellence, growth, and sustainable value creation within and well beyond our industry.",
-                "link": " Investing in Our People"
+                "title": "What we believe",
+                "description": "We believe in enabling our people to realise their full potential by creating an inclusive, supportive and collaborative learning environment.",
+                "link": "Investing In Our People"
             },
             "slide2": {
-                "title": "What we believe in",
-                "description": "We believe in delivering excellence, growth, and sustainable value creation within and well beyond our industry.",
-                "link": " Investing in Our Comunity"
+                "title": "What We Believe",
+                "description": "We believe in delivering meaningful social investment programmes to create sustainable benefits for Omani society.",
+                "link": "Investing In Our Community"
             },
             "slide3": {
-                "title": "What we believe in",
-                "description": "We believe in delivering excellence, growth, and sustainable value creation within and well beyond our industry.",
-                "link": " Investing in Oman Sustainability"
+                "title": "What We Believe",
+                "description": "We believe in delivering excellence, growth and sustainable value creation within and well beyond our industry.",
+                "link": "Investing In Oman’s Sustainability"
             },
             "mobileSlider": {
                 "slide1": {
-                    "title": "What we believe in",
-                    "description": "We believe in delivering excellence, growth, and sustainable value creation within and well beyond our industry.",
-                    "link": " Investing in Our People"
+                    "title": "What we believe",
+                    "description": "We believe in enabling our people to realise their full potential by creating an inclusive, supportive and collaborative learning environment.",
+                    "link": "Investing In Our People"
                 },
                 "slide2": {
-                    "title": "What we believe in",
-                    "description": "We believe in delivering excellence, growth, and sustainable value creation within and well beyond our industry.",
-                    "link": " Investing in Our People"
+                    "title": "What We Believe",
+                    "description": "We believe in delivering meaningful social investment programmes to create sustainable benefits for Omani society.",
+                    "link": "Investing In Our Community"
                 },
                 "slide3": {
-                    "title": "What we believe in",
-                    "description": "We believe in delivering excellence, growth, and sustainable value creation within and well beyond our industry.",
-                    "link": " Investing in Our People"
+                    "title": "What We Believe",
+                    "description": "We believe in delivering excellence, growth and sustainable value creation within and well beyond our industry.",
+                    "link": "Investing In Oman’s Sustainability"
                 }
             }
         },
         "FourthSection": {
             "subtitle": "What we do",
-            "title": "We are explorers at heart",
+            "title": "We Are Proud To Serve Oman",
             "description": "That drive to uncover the next frontier and focus on delivering excellence, growth, and sustainable value creation within and well beyond our industry.",
             "accordions": {
                 "accordion1": {
-                    "title": "Our Mega projects",
-                    "description": "An unprecedented production powerhouse.",
+                    "title": "Our Mega Projects",
+                    "description": "Our giant projects are delivering unprecedented value.",
                     "link": "Explore"
                 },
                 "accordion2": {
-                    "title": "Health, safety & environment",
-                    "description": "Sustainable business operations",
+                    "title": "Health And Safety",
+                    "description": "Safety is the bedrock of all we do.",
                     "link": "Explore"
                 },
                 "accordion3": {
                     "title": "Energy Transition",
-                    "description": "To zero-carbon goal",
+                    "description": "We are working hard to be a net-zero business by 2050.",
                     "link": "Explore"
                 },
                 "accordion4": {
                     "title": "Our People",
-                    "description": "To zero-carbon goal",
+                    "description": "Our staff are PDO’s greatest asset.",
                     "link": "Explore"
                 }
             }
@@ -131,8 +131,8 @@
             "slider": {
                 "tabs": {
                     "first": "News & Media",
-                    "second": "Al Fahal Magazine",
-                    "third": "Our publication "
+                    "second": "The Latest from Al Fahal Magazine",
+                    "third": "PDO Sustainability Report "
                 },
                 "slides": {
                     "slide1": {

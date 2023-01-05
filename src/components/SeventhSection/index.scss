@@ -607,7 +607,7 @@
         overflow: hidden;
         position: relative;
         & .title {
-            width: 460px;
+            width: 500px;
             height: 45px;
             font-weight: 500;
             font-size: 36px;
@@ -621,11 +621,11 @@
             display: flex;
             & .content-left {
                 margin-top: 70px;
-                width: 640px;
+                width: 1000px;
                 & .tabs {
                     display: flex;
                     justify-content: space-between;
-                    width: 640px;
+                    width: 1000px;
                     height: 47px;
                     margin-bottom: 50px;
                     border-bottom: 1px solid $section-background;
