@@ -4,7 +4,7 @@
   "scripts": {
     "start": "cross-env-shell NODE_ENV=development ts-node -P \"./tsconfig.webpack.json\" \"./scripts/webpack/start\"",
     "build": "cross-env-shell NODE_ENV=production ts-node -P \"./tsconfig.webpack.json\" \"./scripts/webpack/build\"",
-    "postbuild": "prettier --write \"./build/index.html\"",
+    "postbuild": "prettier --write \"./build/\"",
     "fullbuild": "cross-env-shell NODE_ENV=production ts-node -P \"./tsconfig.webpack.json\" \"./scripts/webpack/fullbuild\"",
     "analyze": "webpack-bundle-analyzer \"./build/stats.json\"",
     "serve": "serve \"./build\" -s",
